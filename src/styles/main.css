@@ -1,0 +1,15 @@
+body {
+  font-size: 25px;
+  color: #000;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
