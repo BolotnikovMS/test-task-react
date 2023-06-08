@@ -4,6 +4,7 @@ import './post-card.css'
 import avatarImg from './../../../../assets/img/icons/user.svg'
 import { IPost } from '../../../../types/post.interface'
 import { Button } from '../../../../components/buttons/Button'
+import { Link } from 'react-router-dom'
 
 interface PropsPostCards {
   post: IPost
@@ -20,8 +21,9 @@ export const PostCard = ({ post }: PropsPostCards) => {
             <Button name='Комментарии' />
           </div>
           <div className='card__author'>
-            <img src={avatarImg} alt='Avatar' />
-            <span>{post.userId}</span>
+            <Link to={`/users/${post.userId}`}>
+              <img src={avatarImg} alt='Avatar' />
+            </Link>
           </div>
         </div>
       </div>
