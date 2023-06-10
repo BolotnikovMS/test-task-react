@@ -4,6 +4,7 @@ import './users.css'
 import { useUsers } from '../../hooks/useUsers'
 import { Loader } from '../../components/loader/Loader'
 import { Error } from '../../components/error/Error'
+import { UserGroup } from './components/userGroup/UserGroup'
 
 export const UserInfoPage = () => {
   const { user, isLoading, error } = useUsers()
@@ -14,32 +15,16 @@ export const UserInfoPage = () => {
         <h2 className='title'>User info</h2>
         {error ? (
           <Error message={error} />
+        ) : isLoading ? (
+          <Loader />
         ) : (
           <div className='user__info'>
-            <div className='user__group'>
-              Name:
-              <span className='user__text'>{user?.name}</span>
-            </div>
-            <div className='user__group'>
-              Username:
-              <span className='user__text'>{user?.username}</span>
-            </div>
-            <div className='user__group'>
-              Email:
-              <span className='user__text'>{user?.email}</span>
-            </div>
-            <div className='user__group'>
-              Phone:
-              <span className='user__text'>{user?.phone}</span>
-            </div>
-            <div className='user__group'>
-              Website:
-              <span className='user__text'>{user?.website}</span>
-            </div>
-            <div className='user__group'>
-              Company:
-              <span className='user__text'>{user?.company.name}</span>
-            </div>
+            <UserGroup groupName='Name' value={user?.name} />
+            <UserGroup groupName='Username' value={user?.username} />
+            <UserGroup groupName='Email' value={user?.email} />
+            <UserGroup groupName='Phone' value={user?.phone} />
+            <UserGroup groupName='Website' value={user?.website} />
+            <UserGroup groupName='Company' value={user?.company.name} />
           </div>
         )}
       </div>
