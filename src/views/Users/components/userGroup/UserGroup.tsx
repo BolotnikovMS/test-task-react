@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './user-group.css'
+
 interface PropsUserGroup {
   groupName: string
   value: string | undefined
