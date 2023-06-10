@@ -1,0 +1,14 @@
+.user__group {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  font-weight: 600;
+}
+
+.user__group+.user__group {
+  margin-top: 7px;
+}
+
+.user__text {
+  font-weight: normal;
+}
