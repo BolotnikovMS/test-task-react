@@ -26,6 +26,14 @@
   height: 100%;
 }
 
-.user__card-body {}
+.user__card-body {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.user__card-text {
+  font-weight: 600;
+}
 
 .user__card-footer {}
