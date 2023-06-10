@@ -14,7 +14,7 @@ export const NavBar = () => {
           <a href='#!'>About Me</a>
         </li>
         <li>
-          <a href='#!'>Users</a>
+          <Link to='/users'>Users</Link>
         </li>
       </ul>
     </nav>
