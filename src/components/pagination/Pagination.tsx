@@ -48,6 +48,7 @@ export const Pagination = ({
 
         return (
           <li
+            key={pageNumber}
             className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
             onClick={() => onPageChange(pageNumber)}
           >
