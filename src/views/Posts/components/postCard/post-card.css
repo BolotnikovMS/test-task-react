@@ -45,3 +45,8 @@
 .card__author img:hover {
   transform: scale(1.2);
 }
+
+.card__comments {
+  margin-top: 12px;
+  padding-left: 20px;
+}
