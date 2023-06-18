@@ -1,0 +1,22 @@
+.search {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.search__group {
+  position: relative;
+}
+
+.search__input {
+  padding: 4px 5px;
+  border: 1px solid #000;
+  border-radius: 7px;
+  font-size: 20px;
+}
+
+.search__btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
