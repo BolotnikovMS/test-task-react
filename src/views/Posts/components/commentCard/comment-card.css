@@ -1,0 +1,18 @@
+.card__comment {
+  padding: 10px 0;
+}
+
+.card__comment+.card__comment {
+  margin-top: 18px;
+  border-top: 1px solid black;
+}
+
+.card__comment-header {
+  margin-bottom: 7px;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.card__comment-body {
+  font-size: 21px;
+}
