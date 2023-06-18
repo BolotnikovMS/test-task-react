@@ -22,10 +22,10 @@ export const UsersPage = () => {
     <section className='users'>
       <div className='user__content'>
         <h2 className='title'>All users</h2>
-        {error ? (
-          <Error message={error} />
-        ) : isLoading ? (
+        {isLoading ? (
           <Loader />
+        ) : error ? (
+          <Error message={error} />
         ) : (
           <>
             <div className='users__cards'>

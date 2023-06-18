@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import './post-card.css'
 import { IPost } from '../../../../types/post.interface'
@@ -10,6 +10,7 @@ import { IComment } from '../../../../types/comment.interface'
 import { CommentCard } from '../commentCard/CommentCard'
 import { Loader } from '../../../../components/loader/Loader'
 import { Icon } from '../../../../components/icon/Icon'
+import { Error } from '../../../../components/error/Error'
 
 interface PropsPostCards {
   post: IPost
@@ -40,7 +41,8 @@ export const PostCard = ({ post }: PropsPostCards) => {
 
   const showComments = () => {
     setShow(!show)
-    fetchCommentsPost(post.id)
+
+    if (!show) fetchCommentsPost(post.id)
   }
 
   return (
@@ -50,11 +52,9 @@ export const PostCard = ({ post }: PropsPostCards) => {
         <div className='card__body'>{post.body}</div>
         <div className='card__footer'>
           <div className='card__btns'>
-            <Button
-              name='Комментарии'
-              iconName={show ? 'uparrow.svg' : 'downarrow.svg'}
-              handlerEvent={showComments}
-            />
+            <Button name='Комментарии' classBtn='btn-bg_blue' handlerEvent={showComments}>
+              {show ? <Icon nameIcon='uparrow.svg' /> : <Icon nameIcon='downarrow.svg' />}
+            </Button>
           </div>
           <div className='card__author'>
             <Link to={`/users/${post.userId}`}>
@@ -65,6 +65,8 @@ export const PostCard = ({ post }: PropsPostCards) => {
         {show ? (
           isLoading ? (
             <Loader />
+          ) : error ? (
+            <Error message={error} />
           ) : (
             <div className='card__comments'>
               {comments &&

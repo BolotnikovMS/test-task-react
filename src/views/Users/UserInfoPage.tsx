@@ -13,10 +13,10 @@ export const UserInfoPage = () => {
     <section className='users'>
       <div className='users__content'>
         <h2 className='title'>User info</h2>
-        {error ? (
-          <Error message={error} />
-        ) : isLoading ? (
+        {isLoading ? (
           <Loader />
+        ) : error ? (
+          <Error message={error} />
         ) : (
           <div className='user__info'>
             <UserGroup groupName='Name' value={user?.name} />
