@@ -5,13 +5,17 @@
   column-gap: 5px;
   color: #000;
   font-size: 20px;
-  border: 1px solid #64a2ff;
+  border: 1px solid transparent;
   border-radius: 8px;
-  background-color: #64a2ff;
   transition: all 0.3s ease-in;
 }
 
 .btn:hover {
   border: 1px solid #000;
   background-color: transparent;
+}
+
+.btn-bg_blue {
+  border: 1px solid #64a2ff;
+  background-color: #64a2ff;
 }
