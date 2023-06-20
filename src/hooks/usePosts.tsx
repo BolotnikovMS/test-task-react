@@ -6,7 +6,7 @@ import { AxiosError } from 'axios'
 
 export const usePosts = () => {
   const [posts, setPosts] = useState<IPost[]>([])
-  const [searchPostTopic, setSearchPostTopic] = useState<string | null>(null)
+  const [parameterPostsSearch, setParameterPostsSearch] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -31,13 +31,13 @@ export const usePosts = () => {
     fetchPosts()
   }, [])
 
-  const getFilteredList = () => {
-    if (!searchPostTopic) return posts
+  const getSearchList = () => {
+    if (!parameterPostsSearch) return posts
 
-    return posts.filter((post: IPost) => post.title.includes(searchPostTopic))
+    return posts.filter((post: IPost) => post.title.includes(parameterPostsSearch))
   }
 
-  const filterPosts = useMemo(getFilteredList, [searchPostTopic, posts])
+  const searchPosts = useMemo(getSearchList, [parameterPostsSearch, posts])
 
-  return { posts, isLoading, error, setSearchPostTopic, filterPosts }
+  return { posts, isLoading, error, setParameterPostsSearch, searchPosts }
 }
