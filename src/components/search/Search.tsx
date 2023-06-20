@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 
 import './search.css'
 import { Button } from '../buttons/Button'
@@ -10,6 +10,12 @@ interface PropsSearch {
 
 export const Search = ({ searchText }: PropsSearch) => {
   const [value, setValue] = useState<string>('')
+
+  useEffect(() => {
+    if (value == '') {
+      searchText('')
+    }
+  })
 
   const handleChanges = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
