@@ -7,25 +7,26 @@ import { Error } from '../../components/error/Error'
 import { usePosts } from '../../hooks/usePosts'
 import { Pagination } from '../../components/pagination/Pagination'
 import { Search } from '../../components/search/Search'
+import { InfoMessage } from '../../components/infoMessage/infoMessage'
 
 const PageSize = 10
 
 export const PostsPage = () => {
-  const { filterPosts, isLoading, error, setSearchPostTopic } = usePosts()
+  const { searchPosts, isLoading, error, setParameterPostsSearch } = usePosts()
   const [currentPage, setCurrentPage] = useState(1)
   const currentPosts = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
     const lastPageIndex = firstPageIndex + PageSize
 
-    return filterPosts?.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage, filterPosts])
+    return searchPosts?.slice(firstPageIndex, lastPageIndex)
+  }, [currentPage, searchPosts])
 
   return (
     <section className='posts'>
       <div className='posts__content'>
         <div className='posts__titles'>
           <h2 className='title'>All posts</h2>
-          <Search searchText={setSearchPostTopic} />
+          <Search searchText={setParameterPostsSearch} />
         </div>
         {isLoading ? (
           <Loader />
@@ -34,12 +35,14 @@ export const PostsPage = () => {
         ) : (
           <>
             <div className='posts__cards'>
-              {currentPosts.map(post => (
-                <PostCard key={post.id} post={post} />
-              ))}
+              {currentPosts.length ? (
+                currentPosts.map(post => <PostCard key={post.id} post={post} />)
+              ) : (
+                <InfoMessage text='No posts.' />
+              )}
               <Pagination
                 currentPage={currentPage}
-                totalCount={filterPosts?.length}
+                totalCount={searchPosts?.length}
                 pageSize={PageSize}
                 onPageChange={page => setCurrentPage(page)}
               />
