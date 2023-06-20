@@ -2,6 +2,13 @@
 
 .users__content {}
 
+.users__titles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 50px;
+}
+
 .user__info {
   margin-top: 30px;
 }
