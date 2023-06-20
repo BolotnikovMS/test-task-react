@@ -6,22 +6,27 @@ import { useUsers } from '../../hooks/useUsers'
 import { Error } from '../../components/error/Error'
 import { Loader } from '../../components/loader/Loader'
 import { Pagination } from '../../components/pagination/Pagination'
+import { Search } from '../../components/search/Search'
+import { InfoMessage } from '../../components/infoMessage/infoMessage'
 
 const PageSize = 5
 
 export const UsersPage = () => {
-  const { users, isLoading, error } = useUsers()
+  const { searchUsers, isLoading, error, setParameterUserSearch } = useUsers()
   const [currentPage, setCurrentPage] = useState(1)
   const currentUsersList = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
     const lastPageIndex = firstPageIndex + PageSize
-    return users?.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage, users])
+    return searchUsers?.slice(firstPageIndex, lastPageIndex)
+  }, [currentPage, searchUsers])
 
   return (
     <section className='users'>
       <div className='user__content'>
-        <h2 className='title'>All users</h2>
+        <div className='users__titles'>
+          <h2 className='title'>All users</h2>
+          <Search searchText={setParameterUserSearch} />
+        </div>
         {isLoading ? (
           <Loader />
         ) : error ? (
@@ -29,13 +34,15 @@ export const UsersPage = () => {
         ) : (
           <>
             <div className='users__cards'>
-              {currentUsersList?.map(userItem => (
-                <UserCard key={userItem.id} user={userItem} />
-              ))}
+              {currentUsersList?.length ? (
+                currentUsersList?.map(userItem => <UserCard key={userItem.id} user={userItem} />)
+              ) : (
+                <InfoMessage text='No users.' />
+              )}
             </div>
             <Pagination
               currentPage={currentPage}
-              totalCount={users?.length}
+              totalCount={searchUsers?.length}
               pageSize={PageSize}
               onPageChange={page => setCurrentPage(page)}
             />
