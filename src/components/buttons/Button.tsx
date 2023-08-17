@@ -1,6 +1,6 @@
-import React from 'react'
-
 import './button.css'
+
+import React from 'react'
 
 enum ButtonTypes {
   Button = 'button',
@@ -27,8 +27,8 @@ export const Button = ({
 
   return (
     <button type={typeBtn} className={styleBtn} onClick={handlerEvent}>
-      {name}
       {children}
+      {name}
     </button>
   )
 }
