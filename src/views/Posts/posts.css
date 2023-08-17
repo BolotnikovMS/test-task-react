@@ -9,6 +9,10 @@
   column-gap: 50px;
 }
 
+.posts__titles + * {
+  margin-top: 15px;
+}
+
 .posts__cards {
-  margin-top: 25px;
+  margin-top: 20px;
 }
