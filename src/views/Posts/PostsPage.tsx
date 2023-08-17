@@ -1,18 +1,20 @@
+import './posts.css'
+
 import React, { useMemo, useState } from 'react'
 
-import './posts.css'
-import { PostCard } from './components/postCard/PostCard'
-import { Loader } from '../../components/loader/Loader'
+import { Dropdown } from '../../components/dropdown/Dropdown'
 import { Error } from '../../components/error/Error'
-import { usePosts } from '../../hooks/usePosts'
+import { InfoMessage } from '../../components/infoMessage/InfoMessage'
+import { Loader } from '../../components/loader/Loader'
 import { Pagination } from '../../components/pagination/Pagination'
+import { PostCard } from './components/postCard/PostCard'
 import { Search } from '../../components/search/Search'
-import { InfoMessage } from '../../components/infoMessage/infoMessage'
+import { usePosts } from '../../hooks/usePosts'
 
 const PageSize = 10
 
 export const PostsPage = () => {
-  const { searchPosts, isLoading, error, setParameterPostsSearch } = usePosts()
+  const { searchPosts, isLoading, error, setParameterPostsSearch, sortPosts, resetSort } = usePosts()
   const [currentPage, setCurrentPage] = useState(1)
   const currentPosts = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
@@ -27,6 +29,13 @@ export const PostsPage = () => {
         <div className='posts__titles'>
           <h2 className='title'>All posts</h2>
           <Search searchText={setParameterPostsSearch} />
+        </div>
+        <div className="posts__sorte">
+          <Dropdown nameBtnDropdown='Sort' nameIcon='sort.svg' menuItems={[
+            <button onClick={() => sortPosts('asc')}>Asc</button>,
+            <button onClick={() => sortPosts('desc')}>Desc</button>,
+            <button onClick={resetSort}>Reset sort</button>,
+          ]} />
         </div>
         {isLoading ? (
           <Loader />
