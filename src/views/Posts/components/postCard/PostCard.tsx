@@ -1,16 +1,17 @@
+import './post-card.css'
+
 import React, { useState } from 'react'
 
-import './post-card.css'
-import { IPost } from '../../../../types/post.interface'
-import { Button } from '../../../../components/buttons/Button'
-import { Link } from 'react-router-dom'
 import { AxiosError } from 'axios'
-import { CommentsServices } from '../../../../services/comment.services'
-import { IComment } from '../../../../types/comment.interface'
+import { Button } from '../../../../components/buttons/Button'
 import { CommentCard } from '../commentCard/CommentCard'
-import { Loader } from '../../../../components/loader/Loader'
-import { Icon } from '../../../../components/icon/Icon'
+import { CommentsServices } from '../../../../services/comment.services'
 import { Error } from '../../../../components/error/Error'
+import { IComment } from '../../../../types/comment.interface'
+import { IPost } from '../../../../types/post.interface'
+import { Icon } from '../../../../components/icon/Icon'
+import { Link } from 'react-router-dom'
+import { Loader } from '../../../../components/loader/Loader'
 
 interface PropsPostCards {
   post: IPost
@@ -58,7 +59,7 @@ export const PostCard = ({ post }: PropsPostCards) => {
           </div>
           <div className='card__author'>
             <Link to={`/users/${post.userId}`}>
-              <Icon nameIcon='user.svg' classIcon='icon_wh-25' altText='Icon user' />
+              <Icon nameIcon='user.svg' classIcon='icon_wh-25' altTextIcon='Icon user' />
             </Link>
           </div>
         </div>
