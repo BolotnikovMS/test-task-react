@@ -3,15 +3,9 @@
   display: inline-block;
 }
 
-.dropdown__btn {
+.dropdown__trigger-btn {
   padding: 5px 10px;
-  border: unset !important;
   font-size: 22px !important;
-}
-
-.dropdown__btn:hover {
-  border: unset !important;
-  background-color: #c9c6c6 !important;
 }
 
 .dropdown__menu {
@@ -28,8 +22,14 @@
   transition: all 0.2s ease-in;
 }
 
-.dropdown button {
+.dropdown__menu-btn {
   width: 100%;
+  padding: 0 5px;
+  background-color: transparent;
+}
+
+.dropdown__menu-btn:hover {
+  background-color: transparent;
 }
 
 .dropdown__menu > li {
