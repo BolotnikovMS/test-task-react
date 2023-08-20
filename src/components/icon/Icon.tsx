@@ -1,6 +1,7 @@
 import './icon.css'
 
 import React from 'react'
+import cx from 'classnames'
 
 interface PropsIcon {
   nameIcon: string
@@ -14,7 +15,7 @@ export const Icon = ({ nameIcon, classIcon, altTextIcon }: PropsIcon) => {
   return (
     <img
       src={iconPath}
-      className={`icon ${classIcon ? classIcon : ''}`}
+      className={cx('icon', classIcon)}
       alt={altTextIcon ? altTextIcon : nameIcon}
     />
   )
