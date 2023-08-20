@@ -2,8 +2,10 @@ import './posts.css'
 
 import React, { useMemo, useState } from 'react'
 
+import { Button } from '../../components/buttons/Button'
 import { Dropdown } from '../../components/dropdown/Dropdown'
 import { Error } from '../../components/error/Error'
+import { Icon } from '../../components/icon/Icon'
 import { InfoMessage } from '../../components/infoMessage/InfoMessage'
 import { Loader } from '../../components/loader/Loader'
 import { Pagination } from '../../components/pagination/Pagination'
@@ -31,11 +33,14 @@ export const PostsPage = () => {
           <Search searchText={setParameterPostsSearch} />
         </div>
         <div className="posts__sorte">
-          <Dropdown nameBtnDropdown='Sort' nameIcon='sort.svg' menuItems={[
-            <button onClick={() => sortPosts('asc')}>Asc</button>,
-            <button onClick={() => sortPosts('desc')}>Desc</button>,
-            <button onClick={resetSort}>Reset sort</button>,
-          ]} />
+          <Dropdown menuItems={[
+            <Button classBtn='dropdown__menu-btn' onClick={() => sortPosts('asc')}>Asc</Button>,
+            <Button classBtn='dropdown__menu-btn' onClick={() => sortPosts('desc')}>Desc</Button>,
+            <Button classBtn='dropdown__menu-btn' onClick={resetSort}>Reset sort</Button>,
+          ]}>
+            <Icon nameIcon='sort.svg' />
+            Sort
+          </Dropdown> 
         </div>
         {isLoading ? (
           <Loader />
