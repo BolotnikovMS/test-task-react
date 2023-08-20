@@ -54,7 +54,6 @@ export const usePosts = () => {
   const resetSort = () => {
     setSortedPosts(posts)
   } 
-
   
   const searchPosts = useMemo(getSearchList, [parameterPostsSearch, sortedPosts])
 
