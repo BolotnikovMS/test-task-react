@@ -3,18 +3,15 @@ import './dropdown.css'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Button } from '../buttons/Button'
-import { Icon } from '../icon/Icon'
+import cx from 'classnames'
 
 interface PropsDropdown {
-  nameBtnDropdown?: string
-  nameIcon?: string
-  classIcon?: string
-  altTextIcon?: string
+  children: React.ReactNode
   menuItems: React.ReactNode[]
-  handlerEvent?: () => void
+  classBtnTrigger?: string
 }
 
-export const Dropdown = ({ nameBtnDropdown, nameIcon, classIcon, altTextIcon, menuItems }: PropsDropdown) => {
+export const Dropdown = ({ children, menuItems, classBtnTrigger }: PropsDropdown) => {
   const [dropdownState, setDropdownState] = useState<boolean>(false)
   const dropdown = useRef<HTMLDivElement | null>(null)
 
@@ -36,10 +33,8 @@ export const Dropdown = ({ nameBtnDropdown, nameIcon, classIcon, altTextIcon, me
 
   return (
     <div className='dropdown' ref={dropdown}>
-      <Button name={nameBtnDropdown ?? ''} classBtn='dropdown__btn' handlerEvent={handelDropdownClick}>
-        {
-          nameIcon && (<Icon nameIcon={nameIcon} classIcon={classIcon} altTextIcon={altTextIcon} />)
-        }
+      <Button classBtn={cx('dropdown__trigger-btn', classBtnTrigger)} onClick={handelDropdownClick}>
+        {children}
       </Button>
       { dropdownState ? (
         <ul className='dropdown__menu'>
