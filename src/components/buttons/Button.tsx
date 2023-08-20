@@ -1,6 +1,7 @@
 import './button.css'
 
 import React from 'react'
+import cx from 'classnames'
 
 enum ButtonTypes {
   Button = 'button',
@@ -8,27 +9,21 @@ enum ButtonTypes {
   Reset = 'reset',
 }
 
-interface PropsButton {
-  children?: React.ReactNode
-  name?: string
+interface PropsButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode
   typeBtn?: ButtonTypes
   classBtn?: string
-  handlerEvent?: () => void
 }
 
 export const Button = ({
   children,
-  name,
   typeBtn = ButtonTypes.Button,
   classBtn,
-  handlerEvent,
+  ...attributes
 }: PropsButton) => {
-  const styleBtn = `btn ${classBtn ? classBtn : ''}`
-
   return (
-    <button type={typeBtn} className={styleBtn} onClick={handlerEvent}>
+    <button type={typeBtn} className={cx('btn', classBtn)} {...attributes}>
       {children}
-      {name}
     </button>
   )
 }
