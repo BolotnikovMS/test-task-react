@@ -53,7 +53,8 @@ export const PostCard = ({ post }: PropsPostCards) => {
         <div className='card__body'>{post.body}</div>
         <div className='card__footer'>
           <div className='card__btns'>
-            <Button name='Комментарии' classBtn='btn-bg_blue' handlerEvent={showComments}>
+            <Button classBtn='btn btn-bg_blue' onClick={showComments}>
+              Комментарии
               {show ? <Icon nameIcon='uparrow.svg' /> : <Icon nameIcon='downarrow.svg' />}
             </Button>
           </div>
