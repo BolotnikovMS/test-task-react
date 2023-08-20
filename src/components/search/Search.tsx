@@ -1,6 +1,7 @@
+import './search.css'
+
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
-import './search.css'
 import { Button } from '../buttons/Button'
 import { Icon } from '../icon/Icon'
 
@@ -36,7 +37,7 @@ export const Search = ({ searchText }: PropsSearch) => {
           placeholder='Search...'
           onChange={handleChanges}
         />
-        <Button classBtn='search__btn' handlerEvent={handleClick}>
+        <Button classBtn='search__btn' onClick={handleClick}>
           <Icon nameIcon='close.svg' classIcon='icon_wh-21' />
         </Button>
       </div>
