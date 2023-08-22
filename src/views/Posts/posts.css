@@ -1,4 +1,6 @@
-.posts {}
+.posts {
+  padding: 15px 0;
+}
 
 .posts__content {}
 
