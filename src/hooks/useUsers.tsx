@@ -1,15 +1,13 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { useParams } from 'react-router-dom'
 import { AxiosError } from 'axios'
-
 import { IUser } from '../types/user.interface'
 import { UserServices } from '../services/user.services'
+import { useParams } from 'react-router-dom'
 
 export const useUsers = () => {
   const [users, setUsers] = useState<IUser[]>()
   const [user, setUser] = useState<IUser>()
-  const [parameterUserSearch, setParameterUserSearch] = useState<string | null>(null)
   const { id } = useParams()
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -60,13 +58,5 @@ export const useUsers = () => {
     fetchUser(parseInt(id))
   }, [id])
 
-  const getSearchList = () => {
-    if (!parameterUserSearch) return users
-
-    return users?.filter((user: IUser) => user.name.includes(parameterUserSearch))
-  }
-
-  const searchUsers = useMemo(getSearchList, [parameterUserSearch, users])
-
-  return { users, user, isLoading, error, setParameterUserSearch, searchUsers }
+  return { users, user, isLoading, error }
 }
