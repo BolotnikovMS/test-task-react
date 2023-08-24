@@ -1,9 +1,9 @@
-import React from 'react'
-
 import './user-card.css'
-import { Link } from 'react-router-dom'
+
 import { IUser } from '../../../../types/user.interface'
 import { Icon } from '../../../../components/icon/Icon'
+import { Link } from 'react-router-dom'
+import React from 'react'
 
 interface PropsUserCard {
   user: IUser
@@ -14,7 +14,7 @@ export const UserCard = ({ user }: PropsUserCard) => {
     <div className='user__card'>
       <Link to={`/users/${user.id}`} className='user__link' />
       <div className='user__card-body'>
-        <Icon nameIcon='user.svg' classIcon='icon_wh-25' altText='Icon user' />
+        <Icon nameIcon='user.svg' classIcon='icon_wh-25' altTextIcon='Icon user' />
         <span className='user__card-text'>{user.name}</span>
       </div>
       <hr className='line' />
