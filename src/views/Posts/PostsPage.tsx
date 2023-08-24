@@ -16,23 +16,23 @@ import { usePosts } from '../../hooks/usePosts'
 const PageSize = 10
 
 export const PostsPage = () => {
-  const { searchPosts, isLoading, error, setParameterPostsSearch, sortPosts, resetSort } = usePosts()
+  const { posts, sortedPosts, isLoading, error, sortPosts, resetSort } = usePosts()
   const [currentPage, setCurrentPage] = useState(1)
   const currentPosts = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
     const lastPageIndex = firstPageIndex + PageSize
 
-    return searchPosts?.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage, searchPosts])
+    return sortedPosts?.slice(firstPageIndex, lastPageIndex)
+  }, [currentPage, sortedPosts])
 
   return (
     <section className='posts'>
       <div className='posts__content'>
         <div className='posts__titles'>
           <h2 className='title'>All posts</h2>
-          <Search searchText={setParameterPostsSearch} />
+          <Search arrayToSearch={posts} keyObjSearch='title' keyObjName='title' linkPath='/posts/' />
         </div>
-        <div className="posts__sorte">
+        <div className="posts__sort">
           <Dropdown menuItems={[
             <Button classBtn='dropdown__menu-btn' onClick={() => sortPosts('asc')}>Asc</Button>,
             <Button classBtn='dropdown__menu-btn' onClick={() => sortPosts('desc')}>Desc</Button>,
@@ -56,7 +56,7 @@ export const PostsPage = () => {
               )}
               <Pagination
                 currentPage={currentPage}
-                totalCount={searchPosts?.length}
+                totalCount={sortedPosts?.length}
                 pageSize={PageSize}
                 onPageChange={page => setCurrentPage(page)}
               />
