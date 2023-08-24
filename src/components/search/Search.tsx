@@ -50,18 +50,20 @@ export const Search = ({ arrayToSearch, keyObjSearch, keyObjName, linkPath }: Pr
           <Icon nameIcon='close.svg' classIcon='icon_wh-21' />
         </Button>
       </div>
-      <div className="search__list">
-        <ul>
-          {
+      <ul className="search__list">
+        {
+          desiredValue ? (
             searchResult?.length ? (
               searchResult.map(result => 
-                <li key={result.id}>
+                <li key={result.id} className='search__list-item'>
                   <Link to={linkPath ? `${linkPath}${result.id}` : `${result.id}`}>{result[keyObjName].substring(30, -10) + '...'}</Link>
                 </li>)
-            ) : null
-          }
-        </ul>
-      </div>
+            ) : (
+              <li className="search__list-item">No result...</li>
+            )
+          ) : null
+        }
+      </ul>
     </div>
   )
 }
