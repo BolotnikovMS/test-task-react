@@ -18,3 +18,13 @@
 .posts__cards {
   margin-top: 20px;
 }
+
+.posts__body + * {
+  margin-top: 30px;
+}
+
+.posts__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

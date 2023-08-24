@@ -1,4 +1,6 @@
-.users {}
+.users {
+  padding: 15px 0;
+}
 
 .users__content {}
 
@@ -11,6 +13,20 @@
 
 .user__info {
   margin-top: 30px;
+}
+
+.user__info + * {
+  margin-top: 25px;
+}
+
+.user__posts + * {
+  margin-top: 40px;
+}
+
+.users__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .users__cards {
