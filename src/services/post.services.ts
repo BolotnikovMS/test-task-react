@@ -1,8 +1,7 @@
-import axios from 'axios'
-
 import { IPost } from '../types/post.interface'
-import { url } from '../constants'
+import axios from 'axios'
 import { delaying } from '../helpers/delaying'
+import { url } from '../constants'
 
 export const PostServices = {
   async getAllPosts() {
@@ -13,4 +12,10 @@ export const PostServices = {
 
     return response.data
   },
+
+  async getPostById(id: number) {
+    const response = await axios.get<IPost>(`${url}/posts/${id}`)
+
+    return response.data
+  }
 }
