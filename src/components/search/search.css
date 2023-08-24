@@ -36,22 +36,31 @@
   position: absolute;
   top: 35px;
   left: 0;
+  right: 4px;
   background-color: rgba(201, 198, 198, 0.95);
   border-radius: 10px;
-  max-width: 215px;
   font-size: 21px;
   z-index: 1;
 }
 
-.search__list > ul {}
-
-.search__list li {
+.search__list-item {
   padding: 6px 10px;
+  position: relative;
   cursor: pointer;
   transition: all 0.3s ease-in;
 }
 
-.search__list li:hover {
+.search__list-item:has(+.search__list-item)::before {
+  position: absolute;
+  content: '';
+  height: 1px;
+  bottom: 0;
+  left: 18px;
+  right: 18px;
+  background-color: #000;
+}
+
+.search__list-item:hover {
   border-radius: 10px;
   background-color: #bdbbbb;
 }
