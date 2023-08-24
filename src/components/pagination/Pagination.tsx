@@ -38,13 +38,13 @@ export const Pagination = ({
 
   const lastPage = paginationRange[paginationRange.length - 1]
   return (
-    <ul className={`pagination ${className}`}>
+    <ul className={`pagination ${className ? className : ''}`}>
       <li className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`} onClick={onPrevious}>
         {'<<'}
       </li>
       {paginationRange.map((pageNumber, i) => {
         if (typeof pageNumber === 'string' && pageNumber === DOTS) {
-          return <li key={`${i}dots`} className='pagination-item dots'>&#8230;</li>
+          return <li key={`${i}dots`} className='pagination-item disabled'>&#8230;</li>
         } else {
           return (
             <li
