@@ -17,7 +17,7 @@ const PageSize = 10
 
 export const PostsPage = () => {
   const { posts, sortedPosts, isLoading, error, sortPosts, resetSort } = usePosts()
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const currentPosts = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
     const lastPageIndex = firstPageIndex + PageSize

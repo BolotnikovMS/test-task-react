@@ -25,9 +25,9 @@
   cursor: pointer;
 }
 
-.pagination-item .dots:hover {
-  background-color: transparent;
-  cursor: default;
+.pagination-item:has(.dots):hover {
+  background-color: unset !important;
+  cursor: default !important;
 }
 
 .selected {

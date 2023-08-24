@@ -1,7 +1,8 @@
-import React from 'react'
-
 import './pagination.css'
-import { usePagination, DOTS, PropsPaginationHook } from '../../hooks/usePagination'
+
+import { DOTS, PropsPaginationHook, usePagination } from '../../hooks/usePagination'
+
+import React from 'react'
 
 interface PropsPaginationComponent extends PropsPaginationHook {
   onPageChange: (arg: number) => void
@@ -41,20 +42,20 @@ export const Pagination = ({
       <li className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`} onClick={onPrevious}>
         {'<<'}
       </li>
-      {paginationRange.map(pageNumber => {
-        if (pageNumber === DOTS) {
-          return <li className='pagination-item dots'>&#8230;</li>
+      {paginationRange.map((pageNumber, i) => {
+        if (typeof pageNumber === 'string' && pageNumber === DOTS) {
+          return <li key={`${i}dots`} className='pagination-item dots'>&#8230;</li>
+        } else {
+          return (
+            <li
+              key={pageNumber}
+              className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
+              onClick={() => onPageChange(pageNumber)}
+            >
+              {pageNumber}
+            </li>
+          )
         }
-
-        return (
-          <li
-            key={pageNumber}
-            className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
-            onClick={() => onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </li>
-        )
       })}
       <li
         className={`pagination-item ${currentPage === lastPage ? 'disabled' : ''}`}
