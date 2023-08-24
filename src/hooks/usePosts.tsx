@@ -1,12 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { IPost } from '../types/post.interface'
 import { PostServices } from '../services/post.services'
+import { useParams } from 'react-router-dom'
 
 export const usePosts = () => {
   const [posts, setPosts] = useState<IPost[]>([])
-  const [parameterPostsSearch, setParameterPostsSearch] = useState<string | null>(null)
+  const [post, setPost] = useState<IPost>()
+  const { id } = useParams()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [sortedPosts, setSortedPosts] = useState<IPost[]>(posts)
@@ -33,11 +35,30 @@ export const usePosts = () => {
     fetchPosts()
   }, [])
 
-  const getSearchList = () => {
-    if (!parameterPostsSearch) return sortedPosts
+  const fetchPost = async (id: number) => {
+    if (!id) return
 
-    return sortedPosts.filter((post: IPost) => post.title.includes(parameterPostsSearch))
+    try {
+      setIsLoading(true)
+      setError('')
+
+      const post: IPost = await PostServices.getPostById(id)
+
+      setPost(post)
+      setIsLoading(false)
+    } catch (error: unknown) {
+      const e = error as AxiosError
+
+      setIsLoading(false)
+      setError(e.message)
+    }
   }
+
+  useEffect(() => {
+    if (!id) return
+    
+    fetchPost(+id)
+  }, [id])
 
   const sortPosts = (pattern: string) => {
     let direction: number
@@ -53,9 +74,7 @@ export const usePosts = () => {
 
   const resetSort = () => {
     setSortedPosts(posts)
-  } 
-  
-  const searchPosts = useMemo(getSearchList, [parameterPostsSearch, sortedPosts])
+  }
 
-  return { isLoading, error, setParameterPostsSearch, searchPosts, sortPosts, resetSort }
+  return { posts, post, isLoading, error, sortedPosts, sortPosts, resetSort }
 }
