@@ -1,6 +1,5 @@
-import axios from 'axios'
-
 import { IUser } from '../types/user.interface'
+import axios from 'axios'
 import { url } from '../constants'
 
 export const UserServices = {
@@ -10,7 +9,7 @@ export const UserServices = {
     return response.data
   },
 
-  async getUserById(id: number) {
+  async getUserById(id: string) {
     const response = await axios.get<IUser>(`${url}/users/${id}`)
 
     return response.data
