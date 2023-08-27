@@ -1,15 +1,18 @@
 import './users.css'
 
+import { Link, useParams } from 'react-router-dom'
+
+import { AxiosError } from 'axios'
 import { Error } from '../../components/error/Error'
 import { Icon } from '../../components/icon/Icon'
-import { Link } from 'react-router-dom'
 import { Loader } from '../../components/loader/Loader'
 import React from 'react'
 import { UserGroup } from './components/userGroup/UserGroup'
-import { useUsers } from '../../hooks/useUsers'
+import { useUser } from '../../hooks/useUser'
 
 export const UserInfoPage = () => {
-  const { user, isLoading, error } = useUsers()
+  const { id } = useParams()
+  const { user, isLoading, isError, error } = useUser(id)
 
   return (
     <section className='users'>
@@ -17,8 +20,8 @@ export const UserInfoPage = () => {
         <h2 className='title'>User info</h2>
         {isLoading ? (
           <Loader />
-        ) : error ? (
-          <Error message={error} />
+        ) : isError ? (
+          <Error message={(error as AxiosError).message} />
         ) : (
           <>
             <div className='user__info'>

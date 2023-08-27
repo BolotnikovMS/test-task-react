@@ -2,6 +2,7 @@ import './users.css'
 
 import React, { useMemo, useState } from 'react'
 
+import { AxiosError } from 'axios'
 import { Error } from '../../components/error/Error'
 import { InfoMessage } from '../../components/infoMessage/InfoMessage'
 import { Loader } from '../../components/loader/Loader'
@@ -13,11 +14,12 @@ import { useUsers } from '../../hooks/useUsers'
 const PageSize = 5
 
 export const UsersPage = () => {
-  const { users, isLoading, error } = useUsers()
+  const {users, isLoading, isError, error} = useUsers()
   const [currentPage, setCurrentPage] = useState(1)
   const currentUsersList = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
     const lastPageIndex = firstPageIndex + PageSize
+    
     return users?.slice(firstPageIndex, lastPageIndex)
   }, [currentPage, users])
 
@@ -30,8 +32,8 @@ export const UsersPage = () => {
         </div>
         {isLoading ? (
           <Loader />
-        ) : error ? (
-          <Error message={error} />
+        ) : isError ? (
+          <Error message={(error as AxiosError).message} />
         ) : (
           <>
             <div className='users__cards'>
