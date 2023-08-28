@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 export const useUser = (id: string | undefined) => {
   const { data: user, isLoading, isError, error } = useQuery({
-    queryFn: () => UserServices.getUserById(String(id)),
+    queryFn: () => UserServices.getUserById(id || ''),
     queryKey: ['user', id],
     staleTime: 1000 * 20,
     enabled: !!id,
