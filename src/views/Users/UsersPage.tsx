@@ -38,7 +38,7 @@ export const UsersPage = () => {
           <>
             <div className='users__cards'>
               {currentUsersList?.length ? (
-                currentUsersList?.map(userItem => <UserCard key={userItem.id} user={userItem} />)
+                currentUsersList.map(userItem => <UserCard key={userItem.id} user={userItem} />)
               ) : (
                 <InfoMessage text='No users.' />
               )}
