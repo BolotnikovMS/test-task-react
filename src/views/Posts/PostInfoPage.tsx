@@ -1,14 +1,17 @@
 import './posts.css'
 
+import { Link, useParams } from 'react-router-dom'
+
+import { AxiosError } from 'axios'
 import { Error } from '../../components/error/Error'
 import { Icon } from '../../components/icon/Icon';
-import { Link } from 'react-router-dom'
 import { Loader } from '../../components/loader/Loader'
 import React from 'react'
-import { usePosts } from '../../hooks/usePosts'
+import { usePost } from '../../hooks/usePost'
 
 export const PostInfoPage = () => {
-  const { post, isLoading, error } = usePosts()
+  const { id } = useParams()
+  const { post, error, isLoading, isError } = usePost(id)
 
   return (
     <section className='posts'>
@@ -16,8 +19,8 @@ export const PostInfoPage = () => {
         {
           isLoading ? (
             <Loader />
-          ) : error ? (
-            <Error message={error} />
+          ) : isError ? (
+            <Error message={(error as AxiosError).message} />
           ) : (
             <>
               <div className="posts__titles">
