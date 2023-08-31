@@ -1,13 +1,9 @@
 import './users.css'
 
+import { Error, InfoMessage, Loader, Pagination, Search } from '../../components'
 import React, { useMemo, useState } from 'react'
 
 import { AxiosError } from 'axios'
-import { Error } from '../../components/error/Error'
-import { InfoMessage } from '../../components/infoMessage/InfoMessage'
-import { Loader } from '../../components/loader/Loader'
-import { Pagination } from '../../components/pagination/Pagination'
-import { Search } from '../../components/search/Search'
 import { UserCard } from './components/userCard/UserCard'
 import { useUsers } from '../../hooks/useUsers'
 

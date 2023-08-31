@@ -1,15 +1,12 @@
 import './post-card.css'
 
+import { Button, Error, Icon, Loader } from '../../../../components'
 import React, { useEffect, useState } from 'react'
 
 import { AxiosError } from 'axios'
-import { Button } from '../../../../components/buttons/Button'
 import { CommentCard } from '../commentCard/CommentCard'
-import { Error } from '../../../../components/error/Error'
 import { IPost } from '../../../../types/post.interface'
-import { Icon } from '../../../../components/icon/Icon'
 import { Link } from 'react-router-dom'
-import { Loader } from '../../../../components/loader/Loader'
 import { useComments } from '../../../../hooks/useComments'
 
 interface PropsPostCards {

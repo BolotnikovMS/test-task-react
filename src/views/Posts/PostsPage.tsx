@@ -1,18 +1,11 @@
 import './posts.css'
 
+import { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search } from '../../components'
 import React, { useMemo, useState } from 'react'
 
 import { AxiosError } from 'axios'
-import { Button } from '../../components/buttons/Button'
-import { Dropdown } from '../../components/dropdown/Dropdown'
-import { Error } from '../../components/error/Error'
-import { Icon } from '../../components/icon/Icon'
-import { InfoMessage } from '../../components/infoMessage/InfoMessage'
-import { Loader } from '../../components/loader/Loader'
-import { Pagination } from '../../components/pagination/Pagination'
 import { PostCard } from './components/postCard/PostCard'
 import { PostPatternSortType } from '../../types/posts.types'
-import { Search } from '../../components/search/Search'
 import { usePosts } from '../../hooks/usePosts'
 
 const PageSize = 10
