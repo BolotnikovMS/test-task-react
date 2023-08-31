@@ -1,11 +1,9 @@
 import './search.css'
 
+import { Button, Icon } from '..'
+import { IPost, IUser } from '../../interfaces'
 import React, { ChangeEvent, useEffect, useMemo, useState } from 'react'
 
-import { Button } from '../buttons/Button'
-import { IPost } from '../../types/post.interface';
-import { IUser } from '../../types/user.interface';
-import { Icon } from '../icon/Icon'
 import { Link } from 'react-router-dom'
 
 type KeysObj = 'name' | 'title' | 'body' | 'username'

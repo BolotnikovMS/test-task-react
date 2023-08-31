@@ -1,7 +1,7 @@
 import './user-card.css'
 
-import { IUser } from '../../../../types/user.interface'
-import { Icon } from '../../../../components/icon/Icon'
+import { IUser } from '../../../../interfaces'
+import { Icon } from '../../../../components'
 import { Link } from 'react-router-dom'
 import React from 'react'
 

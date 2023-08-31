@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { CommentCard } from '../commentCard/CommentCard'
-import { IPost } from '../../../../types/post.interface'
+import { IPost } from '../../../../interfaces'
 import { Link } from 'react-router-dom'
 import { useComments } from '../../../../hooks/useComments'
 

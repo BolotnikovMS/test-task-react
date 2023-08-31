@@ -1,5 +1,5 @@
-import { IPost } from '../types/post.interface'
-import { IUser } from '../types/user.interface'
+import { IPost, IUser } from '../interfaces'
+
 import axios from 'axios'
 import { url } from '../constants'
 

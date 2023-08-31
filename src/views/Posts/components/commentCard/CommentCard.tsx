@@ -1,7 +1,7 @@
-import React from 'react'
-
 import './comment-card.css'
-import { IComment } from '../../../../types/comment.interface'
+
+import { IComment } from '../../../../interfaces'
+import React from 'react'
 
 interface PropsCommentCard {
   comment: IComment

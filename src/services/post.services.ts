@@ -1,4 +1,4 @@
-import { IPost } from '../types/post.interface'
+import { IPost } from '../interfaces'
 import { PostPatternSortType } from '../types/posts.types'
 import axios from 'axios'
 import { delaying } from '../helpers/delaying'
