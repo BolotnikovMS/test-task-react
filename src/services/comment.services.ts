@@ -1,4 +1,4 @@
-import { IComment } from '../types/comment.interface'
+import { IComment } from '../interfaces'
 import axios from 'axios'
 import { delaying } from '../helpers/delaying';
 import { url } from '../constants'
