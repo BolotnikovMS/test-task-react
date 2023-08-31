@@ -38,7 +38,7 @@ export const UserInfoPage = () => {
               {
                 isLoadingPosts ? (
                   <Loader />
-                ) : isError ? (
+                ) : isErrorPosts ? (
                   <Error message={(errorPost as AxiosError).message}/>
                 ) : (
                   userPosts?.length ? (
