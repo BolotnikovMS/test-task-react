@@ -1,18 +1,19 @@
 import './users.css'
 
+import { Error, Icon, InfoMessage, Loader } from '../../components'
 import { Link, useParams } from 'react-router-dom'
 
 import { AxiosError } from 'axios'
-import { Error } from '../../components/error/Error'
-import { Icon } from '../../components/icon/Icon'
-import { Loader } from '../../components/loader/Loader'
+import { PostCard } from '../Posts/components/postCard/PostCard'
 import React from 'react'
 import { UserGroup } from './components/userGroup/UserGroup'
+import { usePostsUser } from '../../hooks/usePostsUser'
 import { useUser } from '../../hooks/useUser'
 
 export const UserInfoPage = () => {
   const { id } = useParams()
-  const { user, isLoading, isError, error } = useUser(id)
+  const { user, error, isLoading, isError } = useUser(id)
+  const { userPosts, error: errorPost, isLoading: isLoadingPosts, isError: isErrorPosts } = usePostsUser(id)
 
   return (
     <section className='users'>
@@ -32,8 +33,21 @@ export const UserInfoPage = () => {
               <UserGroup groupName='Website' value={user?.website} />
               <UserGroup groupName='Company' value={user?.company.name} />
             </div>
+            <h3 className='title-1'>User posts</h3>
             <div className="user__posts">
-              <h3>User posts</h3>
+              {
+                isLoadingPosts ? (
+                  <Loader />
+                ) : isError ? (
+                  <Error message={(errorPost as AxiosError).message}/>
+                ) : (
+                  userPosts?.length ? (
+                    userPosts.map(post => <PostCard key={post.id} post={post}/>)
+                  ) : (
+                    <InfoMessage text='No posts.'/>  
+                  )
+                )
+              }
             </div>
             <div className="users__btns">
               <Link to={'/'} className='link'>
