@@ -24,7 +24,6 @@ export const UsersPage = () => {
       <div className='user__content'>
         <div className='users__titles'>
           <h2 className='title'>All users</h2>
-          <Search arrayToSearch={users} keyObjSearch='name' keyObjName='name' />
         </div>
         {isLoading ? (
           <Loader />
