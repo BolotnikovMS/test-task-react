@@ -1,12 +1,14 @@
 import './posts.css'
 
-import { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search } from '../../components'
+import { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search, SearchList } from '../../components'
 import React, { useMemo, useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { PostCard } from './components/postCard/PostCard'
 import { PostPatternSortType } from '../../types/posts.types'
+import { PostServices } from '../../services/post.services'
 import { usePosts } from '../../hooks/usePosts'
+import { useQuery } from '@tanstack/react-query'
 
 const PageSize = 10
 
@@ -21,12 +23,29 @@ export const PostsPage = () => {
     return posts?.slice(firstPageIndex, lastPageIndex)
   }, [currentPage, posts])
 
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const { data: searchResult, error: searchError, isLoading: searchIsLoading, isError: searchIsError } = useQuery({
+    queryFn: () => PostServices.getAllPosts({searchString: searchQuery}),
+    queryKey: ['searchResult', searchQuery],
+    enabled: !!searchQuery
+  })
+
+  const handleChanges = (value: string) => {
+    setSearchQuery(value)
+  }
+
   return (
     <section className='posts'>
       <div className='posts__content'>
         <div className='posts__titles'>
           <h2 className='title'>All posts</h2>
-          <Search arrayToSearch={posts} keyObjSearch='title' keyObjName='title' linkPath='/posts/' />
+          <Search onChange={handleChanges} searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
+            {searchQuery ? 
+              <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult}/>
+              :
+              null
+            }
+          </Search>
         </div>
         <div className="posts__sort">
           <Dropdown menuItems={[
