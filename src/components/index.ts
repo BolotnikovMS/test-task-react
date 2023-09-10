@@ -6,5 +6,6 @@ import { InfoMessage } from './infoMessage/InfoMessage'
 import { Loader } from './loader/Loader'
 import { Pagination } from './pagination/Pagination'
 import { Search } from './search/Search'
+import { SearchList } from './search/SearchList'
 
-export { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search }
+export { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search, SearchList }
