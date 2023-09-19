@@ -1,6 +1,6 @@
 import './users.css'
 
-import { Error, InfoMessage, Loader, Pagination, Search } from '../../components'
+import { Error, InfoMessage, Loader, Pagination } from '../../components'
 import React, { useMemo, useState } from 'react'
 
 import { AxiosError } from 'axios'
@@ -10,8 +10,8 @@ import { useUsers } from '../../hooks/useUsers'
 const PageSize = 5
 
 export const UsersPage = () => {
-  const {users, isLoading, isError, error} = useUsers()
   const [currentPage, setCurrentPage] = useState(1)
+  const {users, totalCount, isFetching, isError, error, isPreviousData} = useUsers({page: currentPage, limit: PageSize})
   const currentUsersList = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize
     const lastPageIndex = firstPageIndex + PageSize
@@ -25,7 +25,7 @@ export const UsersPage = () => {
         <div className='users__titles'>
           <h2 className='title'>All users</h2>
         </div>
-        {isLoading ? (
+        {isFetching ? (
           <Loader />
         ) : isError ? (
           <Error message={(error as AxiosError).message} />
@@ -39,10 +39,10 @@ export const UsersPage = () => {
               )}
             </div>
             <Pagination
+              totalPage={totalCount / PageSize}
               currentPage={currentPage}
-              totalCount={users?.length}
-              pageSize={PageSize}
-              onPageChange={page => setCurrentPage(page)}
+              prevData={isPreviousData}
+              setCurrentPage={setCurrentPage}
             />
           </>
         )}

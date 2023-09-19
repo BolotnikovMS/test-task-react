@@ -1,31 +1,26 @@
 import './posts.css'
 
 import { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search, SearchList } from '../../components'
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { PostCard } from './components/postCard/PostCard'
 import { PostPatternSortType } from '../../types/posts.types'
 import { PostServices } from '../../services/post.services'
+import { useLocation } from 'react-router-dom'
 import { usePosts } from '../../hooks/usePosts'
 import { useQuery } from '@tanstack/react-query'
 
 const PageSize = 10
 
 export const PostsPage = () => {
+  const pageParam = new URLSearchParams(useLocation().search).get("_page") 
+  const [currentPage, setCurrentPage] = useState<number>(pageParam === null ? 1 : +pageParam)
   const [patternSort, setPatternSort] = useState<PostPatternSortType>('asc')
-  const { posts, error, isLoading, isError } = usePosts(patternSort)
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const currentPosts = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize
-    const lastPageIndex = firstPageIndex + PageSize
-
-    return posts?.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage, posts])
-
+  const { posts, totalCount, error, isError, isFetching, isPreviousData } = usePosts({pattern: patternSort, page: currentPage, limit: PageSize})
   const [searchQuery, setSearchQuery] = useState<string>('')
   const { data: searchResult, error: searchError, isLoading: searchIsLoading, isError: searchIsError } = useQuery({
-    queryFn: () => PostServices.getAllPosts({searchString: searchQuery}),
+    queryFn: () => PostServices.getAllPosts({searchString: searchQuery, limit: 7}),
     queryKey: ['searchResult', searchQuery],
     enabled: !!searchQuery
   })
@@ -56,24 +51,25 @@ export const PostsPage = () => {
             Sort
           </Dropdown> 
         </div>
-        {isLoading ? (
+        {isFetching ? (
           <Loader />
         ) : isError ? (
           <Error message={(error as AxiosError).message} />
         ) : (
           <>
             <div className='posts__cards'>
-              {currentPosts?.length ? (
-                currentPosts.map(post => <PostCard key={post.id} post={post} />)
-              ) : (
-                <InfoMessage text='No posts.' />
-              )}
-              <Pagination
-                currentPage={currentPage}
-                totalCount={posts?.length}
-                pageSize={PageSize}
-                onPageChange={page => setCurrentPage(page)}
-              />
+              {
+                posts?.length ? (
+                  posts.map(post => <PostCard key={post.id} post={post}/>)
+                ) : (
+                  <InfoMessage text='No posts.' />
+                )
+              }
+              <Pagination 
+                totalPage={totalCount / PageSize} 
+                currentPage={currentPage} 
+                prevData={isPreviousData} 
+                setCurrentPage={setCurrentPage} />
             </div>
           </>
         )}

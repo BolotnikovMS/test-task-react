@@ -3,11 +3,18 @@ import { IPost, IUser } from '../interfaces'
 import axios from 'axios'
 import { url } from '../constants'
 
-export const UserServices = {
-  async getAllUsers() {
-    const response = await axios.get<IUser[]>(`${url}/users`)
+interface IParamsUserServices {
+  page?: number
+  limit?: number
+}
 
-    return response.data
+export const UserServices = {
+  async getAllUsers({ page, limit }: IParamsUserServices) {
+    const response = await axios.get<IUser[]>(`${url}/users`, {
+      params: { _page: page, _limit: limit }
+    })
+
+    return response
   },
 
   async getUserById(id: string) {

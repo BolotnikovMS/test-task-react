@@ -1,68 +1,65 @@
 import './pagination.css'
 
-import { DOTS, PropsPaginationHook, usePagination } from '../../hooks/usePagination'
+import { Link, useLocation } from 'react-router-dom'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 
-import React from 'react'
-
-interface PropsPaginationComponent extends PropsPaginationHook {
-  onPageChange: (arg: number) => void
+interface PropsPagination {
   className?: string
+  totalPage: number
+  currentPage: number
+  prevData: boolean
+  setCurrentPage: Dispatch<SetStateAction<number>>
 }
 
-export const Pagination = ({
-  onPageChange,
-  totalCount,
-  siblingCount,
-  currentPage,
-  pageSize,
-  className,
-}: PropsPaginationComponent) => {
-  const paginationRange = usePagination({
-    currentPage,
-    totalCount,
-    siblingCount,
-    pageSize,
-  })
-
-  if (currentPage === 0 || paginationRange?.length === undefined || paginationRange.length < 2) {
-    return null
+export const Pagination = ({ className, totalPage, currentPage, prevData, setCurrentPage }: PropsPagination) => {
+  const pageParam = new URLSearchParams(useLocation().search).get("_page")
+  const arrPage = []
+  for (let i = 1; i <= totalPage; i++) {
+    arrPage.push(i)
   }
 
-  const onNext = () => {
-    onPageChange(currentPage + 1)
-  }
+  useEffect(() => {
+    if (pageParam === null) {
+      setCurrentPage(1)
+    } else {
+      setCurrentPage(+pageParam)
+    }
 
-  const onPrevious = () => {
-    onPageChange(currentPage - 1)
-  }
-
-  const lastPage = paginationRange[paginationRange.length - 1]
+  }, [pageParam, setCurrentPage])
+  
   return (
-    <ul className={`pagination ${className ? className : ''}`}>
-      <li className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`} onClick={onPrevious}>
-        {'<<'}
-      </li>
-      {paginationRange.map((pageNumber, i) => {
-        if (typeof pageNumber === 'string' && pageNumber === DOTS) {
-          return <li key={`${i}dots`} className='pagination-item disabled'>&#8230;</li>
-        } else {
-          return (
-            <li
-              key={pageNumber}
-              className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
-              onClick={() => onPageChange(pageNumber)}
+    <div>
+      <ul className={`pagination ${className ? className : ''}`}>
+        <Link 
+          className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
+          to={`/?_page=${currentPage === 1 ? currentPage : currentPage - 1}`}
+          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+        >
+          Prev
+        </Link>
+        {
+          arrPage.map(link => (
+            <Link
+              key={link}
+              to={`/?_page=${link}`}
+              className={`pagination-item ${link === currentPage ? 'selected' : ''}`}
             >
-              {pageNumber}
-            </li>
-          )
+              {link}
+            </Link>
+          ))
         }
-      })}
-      <li
-        className={`pagination-item ${currentPage === lastPage ? 'disabled' : ''}`}
-        onClick={onNext}
-      >
-        {'>>'}
-      </li>
-    </ul>
+        <Link 
+          className={`pagination-item ${currentPage === totalPage ? 'disabled' : ''}`}
+          to={`/?_page=${currentPage === totalPage ? currentPage : currentPage + 1}`} 
+          onClick={() => {
+            if (!prevData && currentPage < totalPage) {
+              setCurrentPage(prev => prev + 1)
+            }
+          }}
+        >
+          Next
+        </Link>
+      </ul>
+    </div>
   )
 }

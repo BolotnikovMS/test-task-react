@@ -8,20 +8,23 @@ interface IParamsPostsServices {
   patternSort?: string
   patternOrder?: PostPatternSortType 
   searchString?: string
+  page?: number
+  limit?: number
 }
 
 export const PostServices = {
-  async getAllPosts({ patternSort, patternOrder, searchString }: IParamsPostsServices) {
+  async getAllPosts({ page, limit, patternSort = 'title', patternOrder, searchString }: IParamsPostsServices) {
     // const response = await axios.get<IPost[]>(`${url}/posts?_limit=10`)
     // https://jsonplaceholder.typicode.com/posts?_sort=title&_order=asc
+    // https://jsonplaceholder.typicode.com/posts?_page=11&_limit=5
     // const qs = patternSort === 'asc' ? `?_sort=title&_order=${patternSort}` : `?_sort=title&_order=${patternSort}`
     const response = await axios.get<IPost[]>(`${url}/posts`, {
-      params: { _sort: 'title', _order: patternOrder, q: searchString }
+      params: { _page: page, _limit: limit, _sort: patternSort, _order: patternOrder, q: searchString }
     })
 
     await delaying(500)
 
-    return response.data
+    return response
   },
 
   async getPostById(id: string) {
