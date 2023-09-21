@@ -14,6 +14,7 @@ interface PropsPagination {
 export const Pagination = ({ className, totalPage, currentPage, prevData, setCurrentPage }: PropsPagination) => {
   const path = useLocation().pathname  
   const pageParam = new URLSearchParams(useLocation().search).get("_page")
+  const arrPages = [...Array(totalPage)].map((_, i) => i + 1)
 
   useEffect(() => {
     if (pageParam === null) {
@@ -23,7 +24,7 @@ export const Pagination = ({ className, totalPage, currentPage, prevData, setCur
     }
 
   }, [pageParam, setCurrentPage])
-  
+
   return (
     <div>
       <ul className={`pagination ${className ? className : ''}`}>
@@ -35,13 +36,13 @@ export const Pagination = ({ className, totalPage, currentPage, prevData, setCur
           Prev
         </Link>
         {
-          Array(totalPage).fill(0).map((_, i) => (
+          arrPages.map(link => (
             <Link
-              key={i + 1}
-              to={`${path}?_page=${i + 1}`}
-              className={`pagination-item ${i + 1 === currentPage ? 'selected' : ''}`}
+              key={link}
+              to={`${path}?_page=${link}`}
+              className={`pagination-item ${link === currentPage ? 'selected' : ''}`}
             >
-              {i + 1}
+              {link}
             </Link>
           ))
         }
