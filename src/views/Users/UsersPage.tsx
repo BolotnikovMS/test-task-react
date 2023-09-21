@@ -1,7 +1,7 @@
 import './users.css'
 
 import { Error, InfoMessage, Loader, Pagination } from '../../components'
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { UserCard } from './components/userCard/UserCard'
@@ -12,13 +12,7 @@ const PageSize = 5
 export const UsersPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const {users, totalCount, isFetching, isError, error, isPreviousData} = useUsers({page: currentPage, limit: PageSize})
-  const currentUsersList = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize
-    const lastPageIndex = firstPageIndex + PageSize
-    
-    return users?.slice(firstPageIndex, lastPageIndex)
-  }, [currentPage, users])
-
+  
   return (
     <section className='users'>
       <div className='user__content'>
@@ -32,11 +26,13 @@ export const UsersPage = () => {
         ) : (
           <>
             <div className='users__cards'>
-              {currentUsersList?.length ? (
-                currentUsersList.map(userItem => <UserCard key={userItem.id} user={userItem} />)
-              ) : (
-                <InfoMessage text='No users.' />
-              )}
+              {
+                users?.length ? (
+                  users.map(userItem => <UserCard key={userItem.id} user={userItem} />)
+                ) : (
+                  <InfoMessage text='No users.' />
+                )
+              }
             </div>
             <Pagination
               totalPage={totalCount / PageSize}
