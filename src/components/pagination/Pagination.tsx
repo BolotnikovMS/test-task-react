@@ -12,6 +12,7 @@ interface PropsPagination {
 }
 
 export const Pagination = ({ className, totalPage, currentPage, prevData, setCurrentPage }: PropsPagination) => {
+  const path = useLocation().pathname  
   const pageParam = new URLSearchParams(useLocation().search).get("_page")
   const arrPage = []
   for (let i = 1; i <= totalPage; i++) {
@@ -32,7 +33,7 @@ export const Pagination = ({ className, totalPage, currentPage, prevData, setCur
       <ul className={`pagination ${className ? className : ''}`}>
         <Link 
           className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
-          to={`/?_page=${currentPage === 1 ? currentPage : currentPage - 1}`}
+          to={`${path}?_page=${currentPage === 1 ? currentPage : currentPage - 1}`}
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
         >
           Prev
@@ -41,7 +42,7 @@ export const Pagination = ({ className, totalPage, currentPage, prevData, setCur
           arrPage.map(link => (
             <Link
               key={link}
-              to={`/?_page=${link}`}
+              to={`${path}?_page=${link}`}
               className={`pagination-item ${link === currentPage ? 'selected' : ''}`}
             >
               {link}
@@ -50,7 +51,7 @@ export const Pagination = ({ className, totalPage, currentPage, prevData, setCur
         }
         <Link 
           className={`pagination-item ${currentPage === totalPage ? 'disabled' : ''}`}
-          to={`/?_page=${currentPage === totalPage ? currentPage : currentPage + 1}`} 
+          to={`${path}?_page=${currentPage === totalPage ? currentPage : currentPage + 1}`} 
           onClick={() => {
             if (!prevData && currentPage < totalPage) {
               setCurrentPage(prev => prev + 1)
