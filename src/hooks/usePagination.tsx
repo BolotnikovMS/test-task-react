@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
 export interface PropsPaginationHook {
-  totalCount: number | undefined
+  totalCount: number
   pageSize: number
   siblingCount?: number
   currentPage: number
@@ -21,9 +21,9 @@ export const usePagination = ({
   siblingCount = 1,
   currentPage,
 }: PropsPaginationHook) => {
+  const totalPageCount: number = Math.ceil(totalCount / pageSize)
+  const totalPageNumbers: number = siblingCount + 5
   const paginationRange = useMemo(() => {
-    const totalPageCount: number = Math.ceil(totalCount / pageSize)
-    const totalPageNumbers: number = siblingCount + 5
 
     if (totalPageNumbers >= totalPageCount) {
       return range(1, totalPageCount)
@@ -55,7 +55,7 @@ export const usePagination = ({
       const middleRange = range(leftSiblingIndex, rightSiblingIndex)
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
     }
-  }, [totalCount, pageSize, siblingCount, currentPage])
+  }, [totalPageNumbers, totalPageCount, currentPage, siblingCount])
 
-  return paginationRange
+  return { totalPageCount, paginationRange }
 }
