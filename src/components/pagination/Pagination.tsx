@@ -10,7 +10,7 @@ interface PropsPaginationComponent extends PropsPaginationHook {
   setCurrentPage: Dispatch<SetStateAction<number>>
 }
 
-export const Pagination2 = ({
+export const Pagination = ({
   totalCount,
   siblingCount,
   currentPage,
