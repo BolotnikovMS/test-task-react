@@ -11,7 +11,7 @@ const PageSize = 5
 
 export const UsersPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
-  const {users, totalCount, isFetching, isError, error, isPreviousData} = useUsers({page: currentPage, limit: PageSize})
+  const { users, totalCount, isFetching, isError, error, isPreviousData } = useUsers({page: currentPage, limit: PageSize})
   
   return (
     <section className='users'>
@@ -34,10 +34,11 @@ export const UsersPage = () => {
                 )
               }
             </div>
-            <Pagination
-              totalPage={totalCount / PageSize}
+            <Pagination 
+              totalCount={totalCount}
+              pageSize={PageSize}
               currentPage={currentPage}
-              prevData={isPreviousData}
+              prevData={isPreviousData} 
               setCurrentPage={setCurrentPage}
             />
           </>

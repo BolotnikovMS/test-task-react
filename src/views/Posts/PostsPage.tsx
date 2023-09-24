@@ -65,11 +65,13 @@ export const PostsPage = () => {
                   <InfoMessage text='No posts.' />
                 )
               }
-              <Pagination 
-                totalPage={totalCount / PageSize} 
-                currentPage={currentPage} 
-                prevData={isPreviousData} 
-                setCurrentPage={setCurrentPage} />
+            <Pagination 
+              totalCount={totalCount}
+              pageSize={PageSize}
+              currentPage={currentPage}
+              prevData={isPreviousData} 
+              setCurrentPage={setCurrentPage}
+            />
             </div>
           </>
         )}
