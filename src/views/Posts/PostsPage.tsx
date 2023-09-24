@@ -28,7 +28,7 @@ export const PostsPage = () => {
   const handleChanges = (value: string) => {
     setSearchQuery(value)
   }
-
+  
   return (
     <section className='posts'>
       <div className='posts__content'>
@@ -36,7 +36,7 @@ export const PostsPage = () => {
           <h2 className='title'>All posts</h2>
           <Search onChange={handleChanges} searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
             {searchQuery ? 
-              <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult}/>
+              <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult?.data}/>
               :
               null
             }
