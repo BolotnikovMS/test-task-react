@@ -1,21 +1,33 @@
 import './pagination.css'
 
+import { DOTS, PropsPaginationHook, usePagination } from '../../hooks/usePagination'
 import { Link, useLocation } from 'react-router-dom'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 
-interface PropsPagination {
-  className?: string
-  totalPage: number
-  currentPage: number
+interface PropsPaginationComponent extends PropsPaginationHook {
   prevData: boolean
+  className?: string
   setCurrentPage: Dispatch<SetStateAction<number>>
 }
 
-export const Pagination = ({ className, totalPage, currentPage, prevData, setCurrentPage }: PropsPagination) => {
-  const path = useLocation().pathname  
+export const Pagination2 = ({
+  totalCount,
+  siblingCount,
+  currentPage,
+  pageSize,
+  prevData,
+  setCurrentPage,
+  className,
+}: PropsPaginationComponent) => {
+  const path = useLocation().pathname
   const pageParam = new URLSearchParams(useLocation().search).get("_page")
-  const arrPages = [...Array(totalPage)].map((_, i) => i + 1)
-
+  const {totalPageCount, paginationRange} = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize,
+  })
+  
   useEffect(() => {
     if (pageParam === null) {
       setCurrentPage(1)
@@ -25,39 +37,45 @@ export const Pagination = ({ className, totalPage, currentPage, prevData, setCur
 
   }, [pageParam, setCurrentPage])
 
+  if (totalPageCount <= 1 || paginationRange?.length === undefined || paginationRange.length < 2) {
+    return null
+  }
+    
   return (
-    <div>
-      <ul className={`pagination ${className ? className : ''}`}>
-        <Link 
-          className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
-          to={`${path}?_page=${currentPage === 1 ? currentPage : currentPage - 1}`}
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-        >
-          Prev
-        </Link>
-        {
-          arrPages.map(link => (
+    <ul className={`pagination ${className ? className : ''}`}>
+      <Link 
+        className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
+        to={`${path}?_page=${currentPage === 1 ? currentPage : currentPage - 1}`}
+        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+      >
+        Prev
+      </Link>
+      {paginationRange.map((pageNumber, i) => {
+        if (typeof pageNumber === 'string' && pageNumber === DOTS) {
+          return <li key={`${i}dots`} className='pagination-item disabled'>&#8230;</li>
+        } else {
+          return (
             <Link
-              key={link}
-              to={`${path}?_page=${link}`}
-              className={`pagination-item ${link === currentPage ? 'selected' : ''}`}
+              key={pageNumber}
+              to={`${path}?_page=${pageNumber}`}
+              className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
             >
-              {link}
+              {pageNumber}
             </Link>
-          ))
+          )
         }
-        <Link 
-          className={`pagination-item ${currentPage === totalPage ? 'disabled' : ''}`}
-          to={`${path}?_page=${currentPage === totalPage ? currentPage : currentPage + 1}`} 
-          onClick={() => {
-            if (!prevData && currentPage < totalPage) {
-              setCurrentPage(prev => prev + 1)
-            }
-          }}
-        >
-          Next
-        </Link>
-      </ul>
-    </div>
+      })}
+      <Link 
+        className={`pagination-item ${currentPage === totalPageCount ? 'disabled' : ''}`}
+        to={`${path}?_page=${currentPage === totalPageCount ? currentPage : currentPage + 1}`} 
+        onClick={() => {
+          if (!prevData && currentPage < totalPageCount) {
+            setCurrentPage(prev => prev + 1)
+          }
+        }}
+      >
+        Next
+      </Link>
+    </ul>
   )
 }
