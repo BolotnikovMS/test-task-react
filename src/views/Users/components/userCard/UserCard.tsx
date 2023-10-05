@@ -15,10 +15,14 @@ export const UserCard = ({ user }: PropsUserCard) => {
       <Link to={`/users/${user.id}`} className='user__link' />
       <div className='user__card-body'>
         <Icon nameIcon='user.svg' classIcon='icon_wh-25' altTextIcon='Icon user' />
-        <span className='user__card-text'>{user.name}</span>
+        <span className='user__card-text-fs user__card-text-fs_21 user__card-text-bold'>{user.name}</span>
       </div>
       <hr className='line' />
-      <div className='user__card-footer'>Email: {user.email}</div>
+      <div className='user__card-footer'>
+        <span className="user__card-text">
+          Email: {user.email}
+        </span>
+      </div>
     </div>
   )
 }
