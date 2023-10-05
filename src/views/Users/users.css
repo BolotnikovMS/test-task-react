@@ -2,8 +2,6 @@
   padding: 15px 0;
 }
 
-.users__content {}
-
 .users__titles {
   display: flex;
   align-items: center;
@@ -40,6 +38,6 @@
   margin-top: 30px;
 }
 
-.users__cards+* {
+.users__cards + * {
   margin-top: 20px;
 }

@@ -7,7 +7,6 @@
   border: 1px dashed #000;
   border-radius: 10px;
   font-size: 20px;
-  /* cursor: pointer; */
   transition: all 0.3s ease;
 }
 
@@ -33,7 +32,13 @@
 }
 
 .user__card-text {
-  font-weight: 600;
+  font-size: clamp(14px, 2.5vw,19px);
 }
 
-.user__card-footer {}
+.user__card-text-fs_21 {
+  font-size: clamp(16px, 2.6vw, 21px);
+}
+
+.user__card-text-bold {
+  font-weight: bold;
+}

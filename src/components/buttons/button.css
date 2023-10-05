@@ -4,7 +4,7 @@
   align-items: center;
   column-gap: 5px;
   color: #000;
-  font-size: 20px;
+  font-size: clamp(13px, 2.3vw, 20px);
   border-radius: 8px;
   background-color: #eaeaea;
   transition: all 0.3s ease-in;
