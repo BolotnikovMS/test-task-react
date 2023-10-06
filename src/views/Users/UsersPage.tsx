@@ -5,11 +5,13 @@ import React, { useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { UserCard } from './components/userCard/UserCard'
+import { useTitle } from '../../hooks/useTitle'
 import { useUsers } from '../../hooks/useUsers'
 
 const PageSize = 5
 
 export const UsersPage = () => {
+  useTitle('User page')
   const [currentPage, setCurrentPage] = useState(1)
   const { users, totalCount, isFetching, isError, error, isPreviousData } = useUsers({page: currentPage, limit: PageSize})
   

@@ -8,9 +8,11 @@ import { PostCard } from '../Posts/components/postCard/PostCard'
 import React from 'react'
 import { UserGroup } from './components/userGroup/UserGroup'
 import { usePostsUser } from '../../hooks/usePostsUser'
+import { useTitle } from '../../hooks/useTitle'
 import { useUser } from '../../hooks/useUser'
 
 export const UserInfoPage = () => {
+  useTitle('User info page')
   const { id } = useParams()
   const { user, error, isLoading, isError } = useUser(id)
   const { userPosts, error: errorPost, isLoading: isLoadingPosts, isError: isErrorPosts } = usePostsUser(id)

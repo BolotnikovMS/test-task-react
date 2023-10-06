@@ -10,10 +10,12 @@ import { PostServices } from '../../services/post.services'
 import { useLocation } from 'react-router-dom'
 import { usePosts } from '../../hooks/usePosts'
 import { useQuery } from '@tanstack/react-query'
+import { useTitle } from '../../hooks/useTitle'
 
 const PageSize = 10
 
 export const PostsPage = () => {
+  useTitle('Posts page')
   const pageParam = new URLSearchParams(useLocation().search).get("_page") 
   const [currentPage, setCurrentPage] = useState<number>(pageParam === null ? 1 : +pageParam)
   const [patternSort, setPatternSort] = useState<PostPatternSortType>('asc')
