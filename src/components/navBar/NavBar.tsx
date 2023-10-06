@@ -1,7 +1,7 @@
-import React from 'react'
-
 import './navbar.css'
+
 import { Link } from 'react-router-dom'
+import React from 'react'
 
 export const NavBar = () => {
   return (
@@ -9,9 +9,6 @@ export const NavBar = () => {
       <ul>
         <li>
           <Link to='/'>Posts</Link>
-        </li>
-        <li>
-          <a href='#!'>About Me</a>
         </li>
         <li>
           <Link to='/users'>Users</Link>
