@@ -13,7 +13,7 @@
   padding: 4px 5px;
   border: 1px solid #000;
   border-radius: 7px;
-  font-size: 20px;
+  font-size: clamp(15px, 2.6vw, 20px);
 }
 
 .search__btn {
@@ -39,7 +39,7 @@
   right: 0;
   background-color: rgba(201, 198, 198, 0.95);
   border-radius: 10px;
-  font-size: 21px;
+  font-size: clamp(15px, 2.6vw, 21px);
   z-index: 1;
 }
 
