@@ -10,7 +10,7 @@ interface PropsIcon {
 }
 
 export const Icon = ({ nameIcon, classIcon, altTextIcon }: PropsIcon) => {
-  const iconPath = `./../../../public/img/icons/${nameIcon}`
+  const iconPath = `./../../../img/icons/${nameIcon}`
 
   return (
     <img
