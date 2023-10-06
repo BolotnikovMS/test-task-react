@@ -3,15 +3,10 @@ import './dropdown.css'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Button } from '../buttons/Button'
+import { IPropsDropdown } from './dropdown.interface'
 import cx from 'classnames'
 
-interface PropsDropdown {
-  children: React.ReactNode
-  menuItems: React.ReactNode[]
-  classBtnTrigger?: string
-}
-
-export const Dropdown = ({ children, menuItems, classBtnTrigger }: PropsDropdown) => {
+export const Dropdown = ({ children, menuItems, classBtnTrigger }: IPropsDropdown) => {
   const [dropdownState, setDropdownState] = useState<boolean>(false)
   const dropdown = useRef<HTMLDivElement | null>(null)
 

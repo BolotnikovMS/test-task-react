@@ -1,14 +1,10 @@
 import './pagination.css'
 
-import { DOTS, PropsPaginationHook, usePagination } from '../../hooks/usePagination'
+import { DOTS, usePagination } from '../../hooks/usePagination'
 import { Link, useLocation } from 'react-router-dom'
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-interface PropsPaginationComponent extends PropsPaginationHook {
-  prevData: boolean
-  className?: string
-  setCurrentPage: Dispatch<SetStateAction<number>>
-}
+import { IPropsPaginationComponent } from './pagination.interface'
 
 export const Pagination = ({
   totalCount,
@@ -18,7 +14,7 @@ export const Pagination = ({
   prevData,
   setCurrentPage,
   className,
-}: PropsPaginationComponent) => {
+}: IPropsPaginationComponent) => {
   const path = useLocation().pathname
   const pageParam = new URLSearchParams(useLocation().search).get("_page")
   const {totalPageCount, paginationRange} = usePagination({

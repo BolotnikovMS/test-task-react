@@ -1,15 +1,10 @@
 import './icon.css'
 
+import { IPropsIcon } from './icon.interface'
 import React from 'react'
 import cx from 'classnames'
 
-interface PropsIcon {
-  nameIcon: string
-  classIcon?: string
-  altTextIcon?: string
-}
-
-export const Icon = ({ nameIcon, classIcon, altTextIcon }: PropsIcon) => {
+export const Icon = ({ nameIcon, classIcon, altTextIcon }: IPropsIcon) => {
   const iconPath = `./../../../img/icons/${nameIcon}`
 
   return (

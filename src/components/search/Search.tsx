@@ -1,16 +1,11 @@
 import './search.css'
 
 import { Button, Icon } from '..'
-import React, { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import React, { ChangeEvent } from 'react'
 
-interface PropsSearch {
-  children: React.ReactNode
-  searchQuery: string
-  setSearchQuery: Dispatch<SetStateAction<string>>
-  onChange: (value: string) => void
-}
+import { IPropsSearch } from './search.interface'
 
-export const Search = ({ children, searchQuery, setSearchQuery, onChange }: PropsSearch) => {
+export const Search = ({ children, searchQuery, setSearchQuery, onChange }: IPropsSearch) => {
   const handleClickReset = () => {
     setSearchQuery('')
   }

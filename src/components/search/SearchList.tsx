@@ -2,16 +2,8 @@ import './search.css'
 
 import { Error, Loader } from '..'
 
-import { AxiosError } from 'axios'
-import { IPost } from '../../interfaces/post.interface';
+import { IPropsSearchList } from './search.interface'
 import React from 'react'
-
-interface IPropsSearchList {
-  searchResult: IPost[] | undefined
-  searchIsLoading: boolean
-  searchIsError: boolean
-  searchError: AxiosError
-}
 
 export const SearchList = ({searchResult, searchIsLoading, searchIsError, searchError}: IPropsSearchList) => {
   return (
