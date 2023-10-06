@@ -7,7 +7,7 @@ import { Error } from '../../components/error/Error'
 import { Icon } from '../../components/icon/Icon';
 import { Loader } from '../../components/loader/Loader'
 import React from 'react'
-import { usePost } from '../../hooks/usePost'
+import { usePost } from '../../hooks'
 
 export const PostInfoPage = () => {
   const { id } = useParams()
