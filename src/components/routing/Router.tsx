@@ -1,12 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { NotFound, PostInfoPage, PostsPage, UserInfoPage, UsersPage } from '../../views'
 
 import { Header } from '../header/Header'
-import { NotFound } from '../../views/NotFound/NotFound'
-import { PostInfoPage } from '../../views/Posts/PostInfoPage'
-import { PostsPage } from '../../views/Posts/PostsPage'
 import React from 'react'
-import { UserInfoPage } from '../../views/Users/UserInfoPage'
-import { UsersPage } from '../../views/Users/UsersPage'
 
 export const Router = () => {
   return (
