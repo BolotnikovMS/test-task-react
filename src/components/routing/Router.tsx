@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { Header } from '../header/Header'
+import { NotFound } from '../../views/NotFound/NotFound'
 import { PostInfoPage } from '../../views/Posts/PostInfoPage'
 import { PostsPage } from '../../views/Posts/PostsPage'
 import React from 'react'
@@ -16,6 +17,7 @@ export const Router = () => {
         <Route element={<PostInfoPage />} path='/posts/:id' />
         <Route element={<UserInfoPage />} path='/users/:id' />
         <Route element={<UsersPage />} path='/users' />
+        <Route element={<NotFound />} path='*' />
       </Routes>
     </BrowserRouter>
   )
