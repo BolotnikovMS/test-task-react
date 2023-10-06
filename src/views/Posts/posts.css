@@ -2,13 +2,11 @@
   padding: 15px 0;
 }
 
-.posts__content {}
-
 .posts__titles {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  column-gap: 50px;
+  gap: 15px;
 }
 
 .posts__titles + * {
@@ -27,4 +25,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 425px) {
+  .posts__titles {
+    flex-direction: column;
+  }
 }

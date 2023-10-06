@@ -1,3 +1,8 @@
+.card__comments {
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
 .card__comment {
   padding: 10px 0;
 }
@@ -9,10 +14,23 @@
 
 .card__comment-header {
   margin-bottom: 7px;
-  font-size: 23px;
+  font-size: clamp(16px, 2.6vw, 23px);
   font-weight: 600;
 }
 
 .card__comment-body {
-  font-size: 21px;
+  font-size: clamp(14px 2.6vw, 21px);
+}
+
+@media (max-width: 768px) {
+  .card__comment+.card__comment {
+    margin-top: 7px;
+  }
+}
+
+@media (max-width: 425px) {
+  .card__comments {
+    margin-top: 7px;
+    padding-left: 15px;
+  }
 }

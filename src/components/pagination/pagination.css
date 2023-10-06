@@ -1,6 +1,8 @@
 .pagination {
   padding: 20px 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
 }
 
@@ -41,4 +43,16 @@
 .disabled:hover {
   background-color: transparent;
   cursor: default;
+}
+
+@media (max-width: 768px) {
+  .pagination{
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
 }

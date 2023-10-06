@@ -4,11 +4,18 @@
 }
 
 .icon_wh-21 {
-  width: 21px;
-  height: 21px;
+  width: 21px !important;
+  height: 21px !important;
 }
 
 .icon_wh-25 {
-  width: 25px;
-  height: 25px;
+  width: 25px !important;
+  height: 25px !important;
+}
+
+@media (max-width: 768px) {
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
 }

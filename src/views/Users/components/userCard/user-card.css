@@ -42,3 +42,9 @@
 .user__card-text-bold {
   font-weight: bold;
 }
+
+@media (max-width: 425px) {
+  .user__card {
+    padding: 10px 5px;
+  }
+}

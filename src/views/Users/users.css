@@ -41,3 +41,23 @@
 .users__cards + * {
   margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .user__posts + * {
+    margin-top: 20px;
+  }
+
+  .users__cards {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 425px) {
+  .user__info {
+    margin-top: 15px;
+  }
+
+  .user__info + * {
+    margin-top: 17px;
+  }
+}
