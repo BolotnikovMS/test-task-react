@@ -1,7 +1,6 @@
 {
   "name": "test-task-site-with-posts",
   "private": true,
-  "homepage": "https://BolotnikovMS.github.io/test-task-react/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
