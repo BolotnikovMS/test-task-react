@@ -8,7 +8,7 @@ import { CommentCard } from '../commentCard/CommentCard'
 import { IPost } from '../../../../interfaces'
 import { Link } from 'react-router-dom'
 import cx from 'classnames';
-import { useComments } from '../../../../hooks/useComments'
+import { useComments } from '../../../../hooks'
 
 interface PropsPostCards {
   post: IPost

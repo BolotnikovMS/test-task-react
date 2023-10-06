@@ -2,15 +2,14 @@ import './posts.css'
 
 import { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search, SearchList } from '../../components'
 import React, { useState } from 'react'
+import { usePosts, useTitle } from '../../hooks'
 
 import { AxiosError } from 'axios'
 import { PostCard } from './components/postCard/PostCard'
 import { PostPatternSortType } from '../../types/posts.types'
 import { PostServices } from '../../services/post.services'
 import { useLocation } from 'react-router-dom'
-import { usePosts } from '../../hooks/usePosts'
 import { useQuery } from '@tanstack/react-query'
-import { useTitle } from '../../hooks/useTitle'
 
 const PageSize = 10
 

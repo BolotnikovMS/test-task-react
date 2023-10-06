@@ -2,11 +2,10 @@ import './users.css'
 
 import { Error, InfoMessage, Loader, Pagination } from '../../components'
 import React, { useState } from 'react'
+import { useTitle, useUsers } from '../../hooks'
 
 import { AxiosError } from 'axios'
 import { UserCard } from './components/userCard/UserCard'
-import { useTitle } from '../../hooks/useTitle'
-import { useUsers } from '../../hooks/useUsers'
 
 const PageSize = 5
 

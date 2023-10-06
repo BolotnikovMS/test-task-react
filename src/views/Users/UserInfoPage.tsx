@@ -2,14 +2,12 @@ import './users.css'
 
 import { Error, Icon, InfoMessage, Loader } from '../../components'
 import { Link, useParams } from 'react-router-dom'
+import { usePostsUser, useTitle, useUser } from '../../hooks'
 
 import { AxiosError } from 'axios'
 import { PostCard } from '../Posts/components/postCard/PostCard'
 import React from 'react'
 import { UserGroup } from './components/userGroup/UserGroup'
-import { usePostsUser } from '../../hooks/usePostsUser'
-import { useTitle } from '../../hooks/useTitle'
-import { useUser } from '../../hooks/useUser'
 
 export const UserInfoPage = () => {
   useTitle('User info page')
