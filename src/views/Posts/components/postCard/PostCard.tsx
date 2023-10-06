@@ -7,6 +7,7 @@ import { AxiosError } from 'axios'
 import { CommentCard } from '../commentCard/CommentCard'
 import { IPost } from '../../../../interfaces'
 import { Link } from 'react-router-dom'
+import cx from 'classnames';
 import { useComments } from '../../../../hooks/useComments'
 
 interface PropsPostCards {
@@ -16,6 +17,9 @@ interface PropsPostCards {
 export const PostCard = ({ post }: PropsPostCards) => {
   const [show, setShow] = useState<boolean>(false)
   const { comments, error, isLoading, isError, refetch } = useComments(String(post.id))
+  const mediaQuery = '(max-width: 425px)'
+  const mediaQueryMatch = window.matchMedia(mediaQuery)
+  const [isMobile, setIsMobile] = useState(false)
 
   const showComments = () => {
     setShow(!show)
@@ -25,6 +29,18 @@ export const PostCard = ({ post }: PropsPostCards) => {
     if (show === true) refetch()
   }, [refetch, show])
 
+  useEffect(() => {
+    const handleClassByMediaQuery = (event: { matches: any }) => {
+      const isMobile = event.matches
+
+      return setIsMobile(isMobile)
+    }
+    mediaQueryMatch.addEventListener('change', handleClassByMediaQuery)
+
+    return () => {
+      mediaQueryMatch.removeEventListener('change', handleClassByMediaQuery)
+    }
+  }, [isMobile, mediaQueryMatch])
 
   return (
     <div className='card'>
@@ -33,14 +49,14 @@ export const PostCard = ({ post }: PropsPostCards) => {
         <div className='card__body'>{post.body}</div>
         <div className='card__footer'>
           <div className='card__btns'>
-            <Button classBtn='btn btn-bg_blue' onClick={showComments}>
+            <Button classBtn='btn-bg_blue' onClick={showComments}>
               Комментарии
               {show ? <Icon nameIcon='uparrow.svg' /> : <Icon nameIcon='downarrow.svg' />}
             </Button>
           </div>
           <div className='card__author'>
             <Link to={`/users/${post.userId}`}>
-              <Icon nameIcon='user.svg' classIcon='icon_wh-25' altTextIcon='Icon user' />
+              <Icon nameIcon='user.svg' classIcon={cx({'icon_wh-21': isMobile, 'icon_wh-25': !isMobile})} altTextIcon='Icon user' />
             </Link>
           </div>
         </div>
