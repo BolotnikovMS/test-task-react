@@ -48,7 +48,7 @@ export const PostsPage = () => {
             <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('asc')}>Asc</Button>,
             <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('desc')}>Desc</Button>,
           ]}>
-            <Icon nameIcon='sort.svg' />
+            <Icon name='sort' />
             Sort
           </Dropdown> 
         </div>

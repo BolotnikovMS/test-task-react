@@ -51,12 +51,12 @@ export const PostCard = ({ post }: PropsPostCards) => {
           <div className='card__btns'>
             <Button classBtn='btn-bg_blue' onClick={showComments}>
               Комментарии
-              {show ? <Icon nameIcon='uparrow.svg' /> : <Icon nameIcon='downarrow.svg' />}
+              {show ? <Icon name='arrow-up'/> : <Icon name='arrow-down' />}
             </Button>
           </div>
           <div className='card__author'>
             <Link to={`/users/${post.userId}`}>
-              <Icon nameIcon='user.svg' classIcon={cx({'icon_wh-21': isMobile, 'icon_wh-25': !isMobile})} altTextIcon='Icon user' />
+              <Icon name='user' className={cx({'icon_wh-21': isMobile, 'icon_wh-25': !isMobile})} />
             </Link>
           </div>
         </div>

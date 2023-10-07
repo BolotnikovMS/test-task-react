@@ -14,7 +14,7 @@ export const UserCard = ({ user }: PropsUserCard) => {
     <div className='user__card'>
       <Link to={`/users/${user.id}`} className='user__link' />
       <div className='user__card-body'>
-        <Icon nameIcon='user.svg' classIcon='icon_wh-25' altTextIcon='Icon user' />
+        <Icon name='user' className='icon_wh-25' />
         <span className='user__card-text-fs user__card-text-fs_21 user__card-text-bold'>{user.name}</span>
       </div>
       <hr className='line' />

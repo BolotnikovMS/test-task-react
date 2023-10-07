@@ -21,7 +21,7 @@ export const Search = ({ children, searchQuery, setSearchQuery, onChange }: IPro
           onChange={({target}: ChangeEvent<HTMLInputElement>) => onChange(target.value)}
         />
         <Button classBtn='search__btn' onClick={handleClickReset}>
-          <Icon nameIcon='close.svg' classIcon='icon_wh-21' />
+          <Icon name='close' className='icon_wh-21' />
         </Button>
       </div>
       {children}

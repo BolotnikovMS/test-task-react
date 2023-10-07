@@ -51,7 +51,7 @@ export const UserInfoPage = () => {
             </div>
             <div className="users__btns">
               <Link to={'/'} className='link'>
-                <Icon nameIcon='arrow-left.svg'/>
+                <Icon name='arrow-left'/>
                 Back to homepage
               </Link>
             </div>

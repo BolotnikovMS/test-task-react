@@ -17,7 +17,7 @@ export const NotFound = () => {
         </i>
       </p>
       <Link to='/' className='link'>
-        <Icon nameIcon='arrow-left.svg'/>
+        <Icon name='arrow-left'/>
         Go Posts
       </Link>
     </div>
