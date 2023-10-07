@@ -6,7 +6,7 @@ import React from 'react'
 
 export const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL} >
       <Header />
       <Routes>
         <Route element={<PostsPage />} path='/' />

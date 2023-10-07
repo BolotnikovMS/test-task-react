@@ -16,7 +16,7 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": false, // Игнорирование не исп переменных или импортов
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
