@@ -1,0 +1,49 @@
+<svg>
+  <symbol id="sort" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fill="inherit"
+      d="M6.90365714,19.8034496 C6.81268627,19.9276666 6.66576323,20.008331 6.5,20.008331 C6.33423677,20.008331 6.18731373,19.9276666 6.09634286,19.8034496 L3.14644661,16.8535534 C2.95118446,16.6582912 2.95118446,16.3417088 3.14644661,16.1464466 C3.34170876,15.9511845 3.65829124,15.9511845 3.85355339,16.1464466 L6,18.2928932 L6,4.5 C6,4.22385763 6.22385763,4 6.5,4 C6.77614237,4 7,4.22385763 7,4.5 L7,18.2928932 L9.14644661,16.1464466 C9.34170876,15.9511845 9.65829124,15.9511845 9.85355339,16.1464466 C10.0488155,16.3417088 10.0488155,16.6582912 9.85355339,16.8535534 L6.90365714,19.8034496 L6.90365714,19.8034496 Z M12.5,6 C12.2238576,6 12,5.77614237 12,5.5 C12,5.22385763 12.2238576,5 12.5,5 L20.5,5 C20.7761424,5 21,5.22385763 21,5.5 C21,5.77614237 20.7761424,6 20.5,6 L12.5,6 Z M12.5,10 C12.2238576,10 12,9.77614237 12,9.5 C12,9.22385763 12.2238576,9 12.5,9 L18.5,9 C18.7761424,9 19,9.22385763 19,9.5 C19,9.77614237 18.7761424,10 18.5,10 L12.5,10 Z M12.5,14 C12.2238576,14 12,13.7761424 12,13.5 C12,13.2238576 12.2238576,13 12.5,13 L16.5,13 C16.7761424,13 17,13.2238576 17,13.5 C17,13.7761424 16.7761424,14 16.5,14 L12.5,14 Z M12.5,18 C12.2238576,18 12,17.7761424 12,17.5 C12,17.2238576 12.2238576,17 12.5,17 L14.5,17 C14.7761424,17 15,17.2238576 15,17.5 C15,17.7761424 14.7761424,18 14.5,18 L12.5,18 Z" />
+  </symbol>
+  <symbol id="close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path fill="inherit"
+      d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z" />
+  </symbol>
+  <symbol id="user" version="1.1" viewBox="0 0 6.3499998 6.3500002" xmlns="http://www.w3.org/2000/svg">
+    <g id="layer1">
+      <path fill="inherit"
+        d="M 3.1708661,3.2974124 C 1.907863,3.2997936 0.86304935,4.299744 0.79995125,5.5634239 A 0.26460945,0.26460945 0 0 0 1.0655682,5.8404096 H 5.2864993 A 0.26460945,0.26460945 0 0 0 5.5500489,5.5634239 C 5.48687,4.2981438 4.4396051,3.2975523 3.1750001,3.2974124 Z"
+        style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000" />
+      <path fill="inherit"
+        d="m 3.1750901,0.5095872 c -0.669506,0 -1.2153281,0.54839 -1.2153321,1.21864 -1.9e-6,0.6702501 0.5458221,1.2205301 1.2153321,1.2205301 0.6695099,0 1.217222,-0.55028 1.2172191,-1.2205301 -4e-6,-0.67025 -0.5477132,-1.21864 -1.2172191,-1.21864 z"
+        style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000" />
+    </g>
+  </symbol>
+  <symbol id="arrow-left" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 46">
+    <path fill="inherit" d="M34.997,40.094c1.338,1.352,1.338,3.541,0,4.893c-1.338,1.35-3.506,1.352-4.846,0l-19.148-19.54
+    c-1.338-1.352-1.338-3.543,0-4.895L30.151,1.014c1.34-1.352,3.506-1.352,4.846,0c1.338,1.352,1.338,3.541,0,4.893L19.294,23
+    L34.997,40.094z" />
+  </symbol>
+  <symbol id="arrow-up" version="1.1" viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg">
+    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"
+        stroke-linejoin="round">
+        <g id="24-px-Icons" transform="translate(-267.000000, -79.000000)" stroke="#000000">
+            <g id="ic_up" transform="translate(264.000000, 72.000000)">
+                <g transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
+                    id="ic_back">
+                    <g stroke-width="2">
+                        <g id="back" transform="translate(8.000000, 4.000000)">
+                            <path d="M8,0 L0,8" id="Line"></path>
+                            <path d="M0,8 L8,16" id="Line"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+  </symbol>
+  <symbol id="arrow-down" version="1.1" viewBox="0 0 307.053 307.053" xmlns="http://www.w3.org/2000/svg">
+    <path fill="inherit" d="M302.445,80.796l-11.101-11.103c-6.123-6.131-16.074-6.131-22.209,0L153.67,183.707L37.907,67.959
+      c-6.134-6.13-16.08-6.13-22.209,0L4.597,79.06c-6.129,6.133-6.129,16.067,0,22.201l137.83,137.829
+      c6.129,6.136,16.067,6.136,22.203,0l137.815-136.096C308.589,96.864,308.589,86.926,302.445,80.796z" />
+  </symbol>
+
+</svg>
