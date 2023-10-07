@@ -1,17 +1,15 @@
 import './icon.css'
 
 import { IPropsIcon } from './icon.interface'
+import Icons from './../../assets/img/icons/sprite.svg'
 import React from 'react'
 import cx from 'classnames'
 
-export const Icon = ({ nameIcon, classIcon, altTextIcon }: IPropsIcon) => {
-  const iconPath = `./../../../img/icons/${nameIcon}`
+export const Icon = ({ name, className }: IPropsIcon) => {
 
   return (
-    <img
-      src={iconPath}
-      className={cx('icon', classIcon)}
-      alt={altTextIcon ? altTextIcon : nameIcon}
-    />
+    <svg className={cx('icon', className)}>
+      <use href={`${Icons}#${name}`}></use>
+    </svg>
   )
 }
