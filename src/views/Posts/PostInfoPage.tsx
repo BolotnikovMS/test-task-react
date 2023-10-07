@@ -31,7 +31,7 @@ export const PostInfoPage = () => {
               </div>
               <div className="posts__btn">
                 <Link to={'/'} className='link'>
-                  <Icon nameIcon='arrow-left.svg'/>
+                  <Icon name='arrow-left'/>
                   Back to homepage
                 </Link>
               </div>
