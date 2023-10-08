@@ -17,7 +17,7 @@ export const Search = ({ children, searchQuery, setSearchQuery, onChange }: IPro
           type='text'
           value={searchQuery}
           className='search__input'
-          placeholder='Search...'
+          placeholder='Posts search...'
           onChange={({target}: ChangeEvent<HTMLInputElement>) => onChange(target.value)}
         />
         <Button classBtn='search__btn' onClick={handleClickReset}>
