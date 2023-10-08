@@ -5,11 +5,7 @@ import React, { ChangeEvent } from 'react'
 
 import { IPropsSearch } from './search.interface'
 
-export const Search = ({ children, searchQuery, setSearchQuery, onChange }: IPropsSearch) => {
-  const handleClickReset = () => {
-    setSearchQuery('')
-  }
-
+export const Search = ({ children, searchQuery, setSearchQuery }: IPropsSearch) => {
   return (
     <div className='search'>
       <div className='search__group'>
@@ -18,9 +14,9 @@ export const Search = ({ children, searchQuery, setSearchQuery, onChange }: IPro
           value={searchQuery}
           className='search__input'
           placeholder='Posts search...'
-          onChange={({target}: ChangeEvent<HTMLInputElement>) => onChange(target.value)}
+          onChange={({target}: ChangeEvent<HTMLInputElement>) => setSearchQuery(target.value)}
         />
-        <Button classBtn='search__btn' onClick={handleClickReset}>
+        <Button classBtn='search__btn' onClick={() => setSearchQuery('')}>
           <Icon name='close' className='icon_wh-21' />
         </Button>
       </div>

@@ -23,20 +23,16 @@ export const PostsPage = () => {
   const { data: searchResult, error: searchError, isLoading: searchIsLoading, isError: searchIsError } = useQuery({
     queryFn: () => PostServices.getAllPosts({searchString: searchQuery, limit: 7}),
     queryKey: ['searchResult', searchQuery],
-    enabled: !!searchQuery
+    enabled: !!searchQuery.trim()
   })
 
-  const handleChanges = (value: string) => {
-    setSearchQuery(value)
-  }
-  
   return (
     <section className='posts'>
       <div className='posts__content'>
         <div className='posts__titles'>
           <h2 className='title'>All posts</h2>
-          <Search onChange={handleChanges} searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
-            {searchQuery ? 
+          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
+            {searchQuery.trim() ? 
               <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult?.data}/>
               :
               null

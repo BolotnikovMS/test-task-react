@@ -7,7 +7,6 @@ export interface IPropsSearch {
   children: React.ReactNode
   searchQuery: string
   setSearchQuery: Dispatch<SetStateAction<string>>
-  onChange: (value: string) => void
 }
 
 export interface IPropsSearchList {
