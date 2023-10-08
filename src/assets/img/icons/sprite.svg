@@ -24,20 +24,20 @@
   </symbol>
   <symbol id="arrow-up" version="1.1" viewBox="0 0 18 10" xmlns="http://www.w3.org/2000/svg">
     <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"
-        stroke-linejoin="round">
-        <g id="24-px-Icons" transform="translate(-267.000000, -79.000000)" stroke="#000000">
-            <g id="ic_up" transform="translate(264.000000, 72.000000)">
-                <g transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
-                    id="ic_back">
-                    <g stroke-width="2">
-                        <g id="back" transform="translate(8.000000, 4.000000)">
-                            <path d="M8,0 L0,8" id="Line"></path>
-                            <path d="M0,8 L8,16" id="Line"></path>
-                        </g>
-                    </g>
-                </g>
+      stroke-linejoin="round">
+      <g id="24-px-Icons" transform="translate(-267.000000, -79.000000)" stroke="#000000">
+        <g id="ic_up" transform="translate(264.000000, 72.000000)">
+          <g transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
+            id="ic_back">
+            <g stroke-width="2">
+              <g id="back" transform="translate(8.000000, 4.000000)">
+                <path d="M8,0 L0,8" id="Line"></path>
+                <path d="M0,8 L8,16" id="Line"></path>
+              </g>
             </g>
+          </g>
         </g>
+      </g>
     </g>
   </symbol>
   <symbol id="arrow-down" version="1.1" viewBox="0 0 307.053 307.053" xmlns="http://www.w3.org/2000/svg">
@@ -45,5 +45,10 @@
       c-6.134-6.13-16.08-6.13-22.209,0L4.597,79.06c-6.129,6.133-6.129,16.067,0,22.201l137.83,137.829
       c6.129,6.136,16.067,6.136,22.203,0l137.815-136.096C308.589,96.864,308.589,86.926,302.445,80.796z" />
   </symbol>
-
+  <symbol id="check" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"
+    enable-background="new 0 0 96 96" xml:space="preserve">
+    <path fill="inherit" d="M36,76c-1.061,0-2.078-0.421-2.828-1.171l-24-24.001c-1.562-1.562-1.562-4.094,0-5.656c1.562-1.562,4.095-1.562,5.656,0
+      L36,66.344l45.172-45.172c1.562-1.562,4.095-1.562,5.656,0c1.562,1.562,1.562,4.095,0,5.657l-48,48C38.078,75.579,37.061,76,36,76
+      z" />
+  </symbol>
 </svg>
