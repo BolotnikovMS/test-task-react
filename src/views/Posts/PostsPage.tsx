@@ -21,10 +21,10 @@ export const PostsPage = () => {
   const { posts, totalCount, error, isError, isFetching, isPreviousData } = usePosts({pattern: patternSort, page: currentPage, limit: PageSize})
   const [searchQuery, setSearchQuery] = useState<string>('')
   const { data: searchResult, error: searchError, isLoading: searchIsLoading, isError: searchIsError } = useQuery({
+    enabled: searchQuery.trim().length > 1,
     queryFn: () => PostServices.getAllPosts({searchString: searchQuery, limit: 7}),
     queryKey: ['searchResult', searchQuery],
-    enabled: !!searchQuery.trim()
-  })
+  })  
 
   return (
     <section className='posts'>
@@ -32,7 +32,7 @@ export const PostsPage = () => {
         <div className='posts__titles'>
           <h2 className='title'>All posts</h2>
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
-            {searchQuery.trim() ? 
+            {searchQuery.trim().length > 1 ? 
               <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult?.data}/>
               :
               null
