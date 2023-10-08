@@ -45,11 +45,27 @@ export const PostsPage = () => {
         </div>
         <div className="posts__sort">
           <Dropdown menuItems={[
-            <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('asc')}>Asc</Button>,
-            <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('desc')}>Desc</Button>,
+            <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('asc')}>
+              {
+                patternSort === 'asc' ?
+                <Icon name='check'/>
+                :
+                null
+              }
+              Asc
+            </Button>,
+            <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('desc')}>
+              {
+                patternSort === 'desc' ?
+                <Icon name='check'/>
+                :
+                null
+              }
+              Desc
+            </Button>,
           ]}>
             <Icon name='sort' />
-            Sort
+            {patternSort}
           </Dropdown> 
         </div>
         {isFetching ? (
