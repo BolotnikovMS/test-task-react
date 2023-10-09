@@ -32,6 +32,33 @@ export const PostsPage = () => {
         <div className='posts__content'>
           <div className='posts__titles'>
             <h2 className='title'>All posts</h2>
+          </div>
+          <div className="posts__control">
+            <div className="posts__sort">
+              <Dropdown menuItems={[
+                <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('asc')}>
+                  Asc
+                  {
+                    patternSort === 'asc' ?
+                    <Icon name='check'/>
+                    :
+                    null
+                  }
+                </Button>,
+                <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('desc')}>
+                  Desc
+                  {
+                    patternSort === 'desc' ?
+                    <Icon name='check'/>
+                    :
+                    null
+                  }
+                </Button>,
+              ]}>
+                <Icon name='sort' />
+                {patternSort}
+              </Dropdown> 
+            </div>
             <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
               {searchQuery.trim().length > 1 ? 
                 <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult?.data}/>
@@ -39,31 +66,6 @@ export const PostsPage = () => {
                 null
               }
             </Search>
-          </div>
-          <div className="posts__sort">
-            <Dropdown menuItems={[
-              <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('asc')}>
-                Asc
-                {
-                  patternSort === 'asc' ?
-                  <Icon name='check'/>
-                  :
-                  null
-                }
-              </Button>,
-              <Button classBtn='dropdown__menu-btn' onClick={() => setPatternSort('desc')}>
-                Desc
-                {
-                  patternSort === 'desc' ?
-                  <Icon name='check'/>
-                  :
-                  null
-                }
-              </Button>,
-            ]}>
-              <Icon name='sort' />
-              {patternSort}
-            </Dropdown> 
           </div>
           {isFetching ? (
             <Loader />

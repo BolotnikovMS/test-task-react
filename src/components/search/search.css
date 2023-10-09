@@ -81,16 +81,18 @@
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
   .search {
-    width: 100%;
+    width: 65%;
     display: block;
   }
 
   .search__input {
     width: 100%;
   }
+}
 
+@media (max-width: 642px) {
   .search__btn {
     top: -2px;
   }

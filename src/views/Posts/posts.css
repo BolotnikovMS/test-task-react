@@ -4,13 +4,17 @@
 
 .posts__titles {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
 }
 
 .posts__titles + * {
   margin-top: 15px;
+}
+
+.posts__control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .posts__cards {
@@ -25,10 +29,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@media (max-width: 425px) {
-  .posts__titles {
-    flex-direction: column;
-  }
 }
