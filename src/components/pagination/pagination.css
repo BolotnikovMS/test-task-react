@@ -22,11 +22,6 @@
   min-width: 32px;
 }
 
-.pagination-item:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-  cursor: pointer;
-}
-
 .pagination-item:has(.dots):hover {
   background-color: unset !important;
   cursor: default !important;
@@ -40,9 +35,16 @@
   pointer-events: none;
 }
 
-.disabled:hover {
-  background-color: transparent;
-  cursor: default;
+@media (hover: hover) and (pointer: fine) {
+  .pagination-item:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+  }
+  
+  .disabled:hover {
+    background-color: transparent;
+    cursor: default;
+  }  
 }
 
 @media (max-width: 768px) {

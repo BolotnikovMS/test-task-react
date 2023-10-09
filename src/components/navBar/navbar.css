@@ -9,6 +9,8 @@
   transition: all 0.3s ease-in;
 }
 
-.nav>ul a:hover {
-  color: #979797;
+@media (hover: hover) and (pointer: fine) {
+  .nav>ul a:hover {
+    color: #979797;
+  }
 }

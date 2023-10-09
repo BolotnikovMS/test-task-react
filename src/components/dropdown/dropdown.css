@@ -28,10 +28,6 @@
   background-color: transparent;
 }
 
-.dropdown__menu-btn:hover {
-  background-color: transparent;
-}
-
 .dropdown__menu > li {
   padding: 6px 10px;
   cursor: pointer;
@@ -41,4 +37,10 @@
 .dropdown__menu > li:hover {
   border-radius: 10px;
   background-color: #bdbbbb;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dropdown__menu-btn:hover {
+    background-color: transparent;
+  }  
 }

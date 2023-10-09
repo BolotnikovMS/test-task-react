@@ -7,11 +7,11 @@
   font-size: clamp(13px, 2.3vw, 20px);
   border-radius: 8px;
   background-color: #eaeaea;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 
-.btn:hover {
-  background-color: #d6d4d4;
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-bg_blue {
@@ -19,9 +19,15 @@
   background-color: #64a2ff;
 }
 
-.btn-bg_blue:hover {
-  border: 1px solid black;
-  background-color: transparent;
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    background-color: #d6d4d4;
+  }
+
+  .btn-bg_blue:hover {
+    border: 1px solid black;
+    background-color: transparent;
+  }
 }
 
 @media (max-width: 768px) {
