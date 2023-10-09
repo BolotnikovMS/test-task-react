@@ -20,9 +20,7 @@ const client = new QueryClient(
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <QueryClientProvider client={client}>
-    <div className='container'>
-      <Router />
-    </div>
+    <Router />
     <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
 )
