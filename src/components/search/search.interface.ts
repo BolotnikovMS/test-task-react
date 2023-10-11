@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 
 import { AxiosError } from 'axios'
-import { IPost } from '../../interfaces'
+import { IPost } from '../../services/post/post.interface'
 
 export interface IPropsSearch {
   children: React.ReactNode

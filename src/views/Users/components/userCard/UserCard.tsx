@@ -1,6 +1,6 @@
 import './user-card.css'
 
-import { IUser } from '../../../../interfaces'
+import { IUser } from '../../../../services/user/user.interface'
 import { Icon } from '../../../../components'
 import { Link } from 'react-router-dom'
 import React from 'react'

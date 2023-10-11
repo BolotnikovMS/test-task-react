@@ -1,4 +1,4 @@
-import { UserServices } from '../services/user.services'
+import { UserServices } from '../services/user/user.services'
 import { useQuery } from '@tanstack/react-query'
 
 export const useUser = (id: string | undefined) => {

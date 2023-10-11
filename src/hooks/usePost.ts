@@ -1,4 +1,4 @@
-import { PostServices } from '../services/post.services'
+import { PostServices } from '../services/post/post.services'
 import { useQuery } from '@tanstack/react-query'
 
 export const usePost = (id: string | undefined) => {

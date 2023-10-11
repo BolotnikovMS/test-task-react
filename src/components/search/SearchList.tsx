@@ -18,7 +18,7 @@ export const SearchList = ({searchResult, searchIsLoading, searchIsError, search
           ) : searchResult && searchResult.length ? (
             searchResult.map(result => 
               <li key={result.id} className='search__list-item'>
-                <Link to={`/posts/${result.id}`}>
+                <Link to={`/posts/${result.slug}`}>
                   {result.title}
                 </Link>
               </li>
