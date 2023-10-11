@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 import { AxiosError } from 'axios'
 import { CommentCard } from '../commentCard/CommentCard'
-import { IPost } from '../../../../interfaces'
+import { IPost } from '../../../../services/post/post.interface'
 import { Link } from 'react-router-dom'
 import cx from 'classnames';
 import { useComments } from '../../../../hooks'
@@ -16,7 +16,7 @@ interface PropsPostCards {
 
 export const PostCard = ({ post }: PropsPostCards) => {
   const [show, setShow] = useState<boolean>(false)
-  const { comments, error, isLoading, isError, refetch } = useComments(String(post.id))
+  const { comments, error, isLoading, isError, refetch } = useComments(post.slug)
   const mediaQuery = '(max-width: 425px)'
   const mediaQueryMatch = window.matchMedia(mediaQuery)
   const [isMobile, setIsMobile] = useState(false)
@@ -55,7 +55,7 @@ export const PostCard = ({ post }: PropsPostCards) => {
             </Button>
           </div>
           <div className='card__author'>
-            <Link to={`/users/${post.userId}`}>
+            <Link to={`/users/${post.user_id}`}>
               <Icon name='user' className={cx({'icon_wh-21': isMobile, 'icon_wh-25': !isMobile})} />
             </Link>
           </div>
@@ -67,8 +67,11 @@ export const PostCard = ({ post }: PropsPostCards) => {
             <Error message={(error as AxiosError).message} />
           ) : (
             <div className='card__comments'>
-              {comments &&
-                comments.map(comment => <CommentCard key={comment.id} comment={comment} />)}
+              {comments?.length === 0 && <p>No comments.</p>}
+              {
+                comments &&
+                comments.map(comment => <CommentCard key={comment.id} comment={comment} />)
+              }
             </div>
           )
         ) : null}

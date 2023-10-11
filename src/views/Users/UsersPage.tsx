@@ -7,12 +7,12 @@ import { useTitle, useUsers } from '../../hooks'
 import { AxiosError } from 'axios'
 import { UserCard } from './components/userCard/UserCard'
 
-const PageSize = 5
+const PageSize = 2
 
 export const UsersPage = () => {
   useTitle('User page')
   const [currentPage, setCurrentPage] = useState(1)
-  const { users, totalCount, isFetching, isError, error, isPreviousData } = useUsers({page: currentPage, limit: PageSize})
+  const { users, totalCount, isFetching, isError, error, isPreviousData } = useUsers({page: currentPage, size: PageSize})
   
   return (
     <section className='users'>

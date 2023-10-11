@@ -27,12 +27,11 @@ export const UserInfoPage = () => {
           ) : (
             <>
               <div className='user__info'>
+                <UserGroup groupName='Username' value={user?.surname} />
                 <UserGroup groupName='Name' value={user?.name} />
-                <UserGroup groupName='Username' value={user?.username} />
+                <UserGroup groupName='Phone' value={user?.patronymic} />
                 <UserGroup groupName='Email' value={user?.email} />
-                <UserGroup groupName='Phone' value={user?.phone} />
-                <UserGroup groupName='Website' value={user?.website} />
-                <UserGroup groupName='Company' value={user?.company.name} />
+                <UserGroup groupName='Website' value={user?.email} />
               </div>
               <h3 className='title-1'>User posts</h3>
               <div className="user__posts">

@@ -1,14 +1,14 @@
 import './posts.css'
 
 import { Button, Dropdown, Error, Icon, InfoMessage, Loader, Pagination, Search, SearchList } from '../../components'
+import { Link, useLocation } from 'react-router-dom'
 import React, { useState } from 'react'
 import { usePosts, useTitle } from '../../hooks'
 
 import { AxiosError } from 'axios'
 import { PostCard } from './components/postCard/PostCard'
-import { PostPatternSortType } from '../../types/posts.types'
-import { PostServices } from '../../services/post.services'
-import { useLocation } from 'react-router-dom'
+import { PostServices } from '../../services/post/post.services'
+import { TOrderSort } from '../../types/order.types'
 import { useQuery } from '@tanstack/react-query'
 
 const PageSize = 10
@@ -17,12 +17,12 @@ export const PostsPage = () => {
   useTitle('Posts page')
   const pageParam = new URLSearchParams(useLocation().search).get("_page") 
   const [currentPage, setCurrentPage] = useState<number>(pageParam === null ? 1 : +pageParam)
-  const [patternSort, setPatternSort] = useState<PostPatternSortType>('asc')
-  const { posts, totalCount, error, isError, isFetching, isPreviousData } = usePosts({pattern: patternSort, page: currentPage, limit: PageSize})
+  const [patternSort, setPatternSort] = useState<TOrderSort>('asc')
+  const { posts, totalCount, error, isError, isFetching, isPreviousData } = usePosts({order: patternSort, page: currentPage, size: PageSize})
   const [searchQuery, setSearchQuery] = useState<string>('')
   const { data: searchResult, error: searchError, isLoading: searchIsLoading, isError: searchIsError } = useQuery({
     enabled: searchQuery.trim().length > 1,
-    queryFn: () => PostServices.getAllPosts({searchString: searchQuery, limit: 7}),
+    queryFn: () => PostServices.getAllPosts({search: searchQuery, size: 7}),
     queryKey: ['searchResult', searchQuery],
   })  
 
@@ -59,6 +59,7 @@ export const PostsPage = () => {
                 {patternSort}
               </Dropdown> 
             </div>
+            <Link to={'/new'} className='btn btn-bg_green'>Add</Link>
             <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} >
               {searchQuery.trim().length > 1 ? 
                 <SearchList searchIsLoading={searchIsLoading} searchIsError={searchIsError} searchError={(searchError as AxiosError)} searchResult={searchResult?.data}/>
