@@ -1,6 +1,6 @@
-import { IPost } from './post.interface'
-import { IQueryParams } from '../../interfaces/qparams.interface';
-import { TOrderSort } from '../../types/order.types'
+import { IPost, IPostData } from './post.interface';
+
+import { IQueryParams } from '../../interfaces/qparams.interface'
 import { TRespPosts } from './post.type'
 import axios from 'axios'
 import { delaying } from '../../helpers/delaying'
@@ -25,5 +25,9 @@ export const PostServices = {
     const response = await axios.get<IPost>(`${url}/posts/${id}`)
 
     return response.data
+  },
+
+  async create(data: IPostData) {
+    return axios.post<IPostData>(`${url}/posts`, data, {headers: {'Content-Type': 'application/json'}})
   }
 }
