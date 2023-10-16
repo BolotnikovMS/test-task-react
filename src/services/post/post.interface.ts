@@ -7,3 +7,5 @@ export interface IPost {
   title: string
   body: string
 }
+
+export type IPostData = Omit<IPost, 'id' | 'slug' | 'user_id'>
