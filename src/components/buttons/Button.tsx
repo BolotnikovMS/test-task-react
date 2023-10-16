@@ -8,9 +8,9 @@ export const Button = ({
   children,
   classBtn,
   ...attributes
-}: IPropsButton) => {
+}: IPropsButton) => {  
   return (
-    <button className={cx('btn', classBtn)} {...attributes}>
+    <button className={cx('btn', classBtn, attributes.disabled && 'btn-disabled')} {...attributes}>
       {children}
     </button>
   )

@@ -14,13 +14,22 @@
   background-color: #6fda67;
 }
 
+.btn-bg_blue {
+  border: 1px solid #64a2ff;
+  background-color: #64a2ff;
+}
+
+.btn.btn-disabled {
+  cursor: not-allowed;
+  background-color: #8f8c8c;
+}
+
 .btn:active {
   transform: scale(0.97);
 }
 
-.btn-bg_blue {
-  border: 1px solid #64a2ff;
-  background-color: #64a2ff;
+.btn.btn-disabled:active {
+  transform: unset;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -35,7 +44,11 @@
 
   .btn-bg_green:hover {
     background-color: #5bb455;
-  }  
+  } 
+
+  .btn.btn-disabled:hover {
+    background-color: #8f8c8c;
+  }
 }
 
 @media (max-width: 768px) {
