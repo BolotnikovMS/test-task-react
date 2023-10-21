@@ -55,7 +55,7 @@ export const PostCard = ({ post }: PropsPostCards) => {
             </Button>
           </div>
           <div className='card__author'>
-            <Link to={`/users/${post.user_id}`}>
+            <Link to={`/users/${post.userId}`}>
               <Icon name='user' className={cx({'icon_wh-21': isMobile, 'icon_wh-25': !isMobile})} />
             </Link>
           </div>
