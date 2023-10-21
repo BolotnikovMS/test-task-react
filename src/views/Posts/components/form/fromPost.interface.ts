@@ -1,5 +1,5 @@
 export interface IPostFields {
-  topic_id: number
+  topicId: number
   title: string
   body: string
   published: boolean
