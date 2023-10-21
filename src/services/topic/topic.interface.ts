@@ -1,6 +1,6 @@
 export interface ITopic {
   id: number
-  user_id: number
+  userId: number
   name: string
   slug: string
 }

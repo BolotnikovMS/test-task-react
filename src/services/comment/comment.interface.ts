@@ -2,10 +2,10 @@ import { IUser } from '../user/user.interface'
 
 export interface IComment {
   id: number
-  post_id: number
-  user_id: number
+  postId: number
+  userId: number
   slug: string
-  comment_body: string
+  commentBody: string
   email: string
   body: string
   user: IUser
