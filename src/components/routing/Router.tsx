@@ -1,11 +1,13 @@
-import { NotFound, PostInfoPage, PostsPage, UserInfoPage, UsersPage } from '../../views'
+import { PostInfoPage, PostsPage, UserInfoPage, UsersPage } from '../../views'
+import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import { Layout } from '../layout/Layout'
+import { Layout } from '..'
 import { NewPost } from '../../views/Posts/NewPost'
-import React from 'react'
 import { TestPage } from '../../views/Test/TestPage'
 import { TestText } from '../../views/Test/TestText'
+
+const NotFound = lazy(() => import('../../views/NotFound/NotFound'))
 
 export const Router = () => {
   return (

@@ -1,6 +1,7 @@
-import { Header } from '../header/Header'
+import { Header, Loader } from '..'
+import React, { Suspense } from 'react'
+
 import { Outlet } from 'react-router-dom'
-import React from 'react'
 
 export const Layout = () => {
   return (
@@ -8,7 +9,9 @@ export const Layout = () => {
       <Header />
       <main>
         <div className="container">
-          <Outlet />
+          <Suspense fallback={<Loader/>}>
+            <Outlet />
+          </Suspense>
         </div>
       </main>
     </>
