@@ -1,10 +1,11 @@
 import './form.css'
 
-import { Button, Error, FormGroup, TextInput, Textarea } from '../../../../components'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Button, Error, FormGroup, TextInput, Textarea, ValidationMessage } from '../../../../components'
+import { SubmitHandler, useController, useForm } from 'react-hook-form'
 
-import { AxiosError } from 'axios'
-import { IPostData } from '../../../../services/post/post.interface';
+import AsyncSelect from 'react-select'
+import { AxiosError } from 'axios';
+import { IPostData } from '../../../../services/post/post.interface'
 import { IPostFields } from './fromPost.interface'
 import { PostServices } from '../../../../services/post/post.services'
 import React from 'react'
@@ -14,10 +15,11 @@ import { useTopics } from '../../../../hooks/useTopics'
 
 export const FormPost = () => {
   const navigate = useNavigate()
-  const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<IPostFields>({
+  const { register, handleSubmit, formState: { errors, isValid }, reset, control } = useForm<IPostFields>({
     mode: 'onBlur'
   })
-  const { topics, error, isError, isLoading } = useTopics()
+  const { field: {value: topicValue, onChange: topicOnChange, ...restTopicField } } = useController({name: 'topicId', control, rules: {required: {value: true, message: 'Field is required!'}}})
+  const { topics, error: topicsError , isError: isErrorTopics, isLoading: isLoadingTopics } = useTopics()
   const { mutateAsync, isError: isErrorMutate, error: errorMutate } = useMutation(['create post'], (data: IPostData) => PostServices.create(data), {
     onSuccess: () => {
       navigate('/')
@@ -27,7 +29,7 @@ export const FormPost = () => {
   const submit: SubmitHandler<IPostFields> = (data) => {
     mutateAsync(data)
     reset()
-  } 
+  }
 
   return (
 		<>
@@ -35,25 +37,25 @@ export const FormPost = () => {
 			<form className='from-post' onSubmit={handleSubmit(submit)}>
 				<div className="form__content">
           <FormGroup>
-            <label>
-              Topics
-              <select className='form__input form__select' defaultValue='default' {...register('topic_id', {
-                required: {
-                  value: true,
-                  message: 'Field is required!'
-                },
-                pattern: /^\d+$/,
-              })}>
-                {isLoading && <option disabled>Loading....</option>}
-                {isError && <option disabled>{(error as AxiosError).message}</option>}
-                {<option disabled value='default'>Select a post topic</option>}
-                {
-                  topics?.map(topic => (
-                    <option key={topic.id} value={+topic.id}>{topic.name}</option>
-                  ))
-                }
-              </select>
-            </label>
+            <AsyncSelect 
+              classNamePrefix="form__custom-select"
+              options={topics}
+              getOptionValue={(option) => option.id.toString()}
+              getOptionLabel={(option) => option.name}
+              value={topicValue ? topics?.find(t => t.id === topicValue) : null}
+              onChange={option => topicOnChange(option ? option.id : option)}
+              isLoading={isLoadingTopics}
+              isDisabled={isErrorTopics}
+              isClearable
+              placeholder="Select a post topic"
+              {...restTopicField}
+            />
+            {
+              errors.topicId && <ValidationMessage children={errors.topicId.message} />
+            }
+            {
+              isErrorTopics && <ValidationMessage children={(topicsError as AxiosError)?.message} />
+            }
           </FormGroup>
           <FormGroup>
             <TextInput 
@@ -89,7 +91,7 @@ export const FormPost = () => {
               placeholder='Enter body post...'
             />
           </FormGroup>
-          <FormGroup className='form__group-row'>
+          <FormGroup className='form__group-row form__group-center'>
               <TextInput
                 register={register}
                 name='published'
