@@ -1,14 +1,9 @@
 import React from 'react'
-
-import { Header } from './components/header/Header'
-import { PostsPage } from './views/Posts/PostsPage'
+import { Router } from './components/routing/Router'
 
 function App() {
   return (
-    <div className='container'>
-      <Header />
-      <PostsPage />
-    </div>
+    <Router />
   )
 }
 
