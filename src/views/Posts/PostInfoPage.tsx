@@ -14,33 +14,31 @@ export const PostInfoPage = () => {
   const { post, error, isLoading, isError } = usePost(id)
 
   return (
-    <section className='posts'>
-      <div className="container">
-        <div className="posts__content">
-          {
-            isLoading ? (
-              <Loader />
-            ) : isError ? (
-              <Error message={(error as AxiosError).message} />
-            ) : (
-              <>
-                <div className="posts__titles">
-                  <h2 className="title">{post?.title}</h2>
-                </div>
-                <div className="posts__body">
-                  <p>{post?.body}</p>
-                </div>
-                <div className="posts__btn">
-                  <Link to={'/'} className='link'>
-                    <Icon name='arrow-left'/>
-                    Back to homepage
-                  </Link>
-                </div>
-              </>
-            )
-          }
-        </div>
+    <div className='posts'>
+      <div className="posts__content">
+        {
+          isLoading ? (
+            <Loader />
+          ) : isError ? (
+            <Error message={(error as AxiosError).message} />
+          ) : (
+            <>
+              <div className="posts__titles">
+                <h2 className="title">{post?.title}</h2>
+              </div>
+              <div className="posts__body">
+                <p>{post?.body}</p>
+              </div>
+              <div className="posts__btn">
+                <Link to={'/'} className='link'>
+                  <Icon name='arrow-left'/>
+                  Back to homepage
+                </Link>
+              </div>
+            </>
+          )
+        }
       </div>
-    </section>
+    </div>
   )
 }

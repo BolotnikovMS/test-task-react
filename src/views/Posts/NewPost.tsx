@@ -3,10 +3,8 @@ import React from 'react'
 
 export const NewPost = () => {
   return (
-    <section className='posts'>
-      <div className="container">
-        <FormPost/>
-      </div>
-    </section>
+    <div className='posts'>
+      <FormPost/>
+    </div>
   )
 }
