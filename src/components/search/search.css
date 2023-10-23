@@ -10,9 +10,6 @@
 }
 
 .search__input {
-  padding: 4px 5px;
-  border: 1px solid #000;
-  border-radius: 7px;
   font-size: clamp(15px, 2.6vw, 20px);
 }
 
