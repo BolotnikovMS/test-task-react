@@ -3,7 +3,7 @@ import React, { lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { Layout } from '..'
-import { NewPost } from '../../views/Posts/NewPost'
+import { PostFormPage } from '../../views/Posts/PostFormPage'
 import { TestPage } from '../../views/Test/TestPage'
 import { TestText } from '../../views/Test/TestText'
 
@@ -14,7 +14,7 @@ export const Router = () => {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<PostsPage />} />
-        <Route path='new' element={<NewPost />} />
+        <Route path='new' element={<PostFormPage />} />
         <Route path='posts/:id' element={<PostInfoPage />} />
         <Route path='users/:id' element={<UserInfoPage />} />
         <Route path='users' element={<UsersPage />} />
