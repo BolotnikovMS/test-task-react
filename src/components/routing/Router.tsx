@@ -1,20 +1,21 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { NotFound, PostInfoPage, PostsPage, UserInfoPage, UsersPage } from '../../views'
+import { PostInfoPage, PostsPage, UserInfoPage, UsersPage } from '../../views'
+import React, { lazy } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-import { Header } from '../header/Header'
-import React from 'react'
+import { Layout } from '..'
+
+const NotFound = lazy(() => import('../../views/NotFound/NotFound'))
 
 export const Router = () => {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL} >
-      <Header />
-      <Routes>
+    <Routes>
+      <Route path='/' element={<Layout />}>
         <Route element={<PostsPage />} path='/' />
         <Route element={<PostInfoPage />} path='/posts/:id' />
         <Route element={<UserInfoPage />} path='/users/:id' />
         <Route element={<UsersPage />} path='/users' />
         <Route element={<NotFound />} path='*' />
-      </Routes>
-    </BrowserRouter>
+      </Route>
+    </Routes>
   )
 }
