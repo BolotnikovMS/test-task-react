@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import { useTitle } from '../../hooks/useTitle'
 
-export const NotFound = () => {
+const NotFound = () => {
   useTitle('No Found!')
 
   return (
@@ -25,3 +25,5 @@ export const NotFound = () => {
     </div>
   )
 }
+
+export default NotFound
